@@ -47,13 +47,25 @@
       </button>
     </div>
 
-    <!-- MENU (slide down) -->
-    <nav class="menu" id="menu" hidden>
-      <a href="#welcome" data-i18n="nav_welcome">Benvenuti</a>
-      <a href="#coast" data-i18n="nav_coast">Costa</a>
-      <a href="#experience" data-i18n="nav_exp">Esperienza</a>
-      <a href="#contact" data-i18n="nav_contact">Contatti</a>
-    </nav>
+<!-- MENU OVERLAY (apre solo al tap, con X) -->
+<div class="overlay" id="overlay" hidden>
+  <div class="overlay__top">
+    <div class="brand">
+      <div class="brand__mark">◎</div>
+    </div>
+
+    <button class="close" id="closeMenu" type="button" aria-label="Chiudi menu">×</button>
+  </div>
+
+  <nav class="overlay__nav" aria-label="Menu">
+    <a href="#home">Home</a>
+    <a href="#welcome">Benvenuti</a>
+    <a href="#coast">Costa</a>
+    <a href="#experience">Esperienza</a>
+    <a href="#contact">Contatti</a>
+    <a class="overlay__cta" href="#coast">PRENOTA LA TUA POSTAZIONE</a>
+  </nav>
+</div>
   </header>
 
   <!-- HERO (full image + handwriting text + INFO button) -->
