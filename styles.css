@@ -416,3 +416,195 @@ body{
 }
 
 
+/* ===== SHUTTLE HERO ===== */
+.hero2{position:relative;min-height:560px}
+.hero2__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero2__overlay{position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.hero2__content{
+  position:relative;
+  padding:70px 22px;
+  color:#fff;
+  text-align:center;
+  max-width:780px;
+  margin:0 auto;
+}
+.hero2__badge{
+  width:78px;height:78px;border-radius:999px;
+  background:rgba(185,162,124,.95);
+  display:grid;place-items:center;
+  margin:0 auto 18px;
+  font-size:34px;
+}
+.hero2__title{
+  font-family:"Georgia",serif;
+  font-size:44px;
+  letter-spacing:.02em;
+  margin-bottom:10px;
+}
+.hero2__text{font-size:18px;line-height:2;opacity:.95}
+.hero2__note{margin-top:18px;opacity:.9}
+
+/* ===== BOX PICKUP ===== */
+.boxWrap{padding:40px 18px;background:var(--bg)}
+.box{
+  max-width:760px;margin:0 auto;
+  background:#fafaf7;
+  padding:44px 26px;
+  text-align:center;
+  border:1px solid rgba(0,0,0,.06);
+}
+.box__lead{color:#b89f78;font-weight:700;letter-spacing:.06em;line-height:2}
+.box__muted{margin-top:14px;color:#b89f78;opacity:.9}
+.box__line{height:1px;background:rgba(0,0,0,.18);width:86%;margin:26px auto}
+.box__title{letter-spacing:.2em;margin-bottom:14px}
+.box__list{list-style:disc;max-width:520px;margin:0 auto 22px;text-align:left;line-height:2;color:#333}
+.box__btn{
+  display:inline-block;
+  padding:16px 26px;
+  border:2px solid #b89f78;
+  color:#b89f78;
+  letter-spacing:.18em;
+  font-weight:800;
+}
+
+/* ===== BIG TITLES (RISTORANTE / MENU) ===== */
+.bigTitle{
+  padding:70px 22px;
+  text-align:center;
+  max-width:860px;
+  margin:0 auto;
+}
+.bigTitle__h{
+  font-family:"Georgia",serif;
+  font-weight:800;
+  letter-spacing:.08em;
+  font-size:54px;
+}
+.bigTitle__s{
+  font-family:"Georgia",serif;
+  font-style:italic;
+  font-size:54px;
+  margin-top:-10px;
+}
+.bigTitle__p{
+  margin:24px auto 0;
+  max-width:720px;
+  color:rgba(0,0,0,.6);
+  font-size:18px;
+  line-height:2;
+}
+.photoFrame{
+  max-width:760px;
+  margin:42px auto 0;
+  background:#fff;
+  padding:18px;
+}
+.photoFrame img{width:100%;display:block}
+
+/* ===== MENU LIST ===== */
+.menuBlock{max-width:760px;margin:46px auto 0;text-align:left}
+.menuCat{color:#b89f78;font-weight:800;letter-spacing:.18em;margin-bottom:14px}
+.menuHr{height:2px;background:rgba(0,0,0,.18);width:100%;margin-bottom:22px}
+
+.menuRow{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  padding:18px 0;
+}
+.menuRow__name{
+  flex:1;
+  letter-spacing:.06em;
+  font-weight:700;
+  color:#222;
+}
+.menuRow__dots{
+  flex:1;
+  border-bottom:3px dotted rgba(0,0,0,.25);
+  transform:translateY(-6px);
+}
+.menuRow__price{min-width:54px;text-align:right;font-weight:900;letter-spacing:.08em}
+
+.acc{border-top:1px solid rgba(0,0,0,.12)}
+.acc:last-of-type{border-bottom:1px solid rgba(0,0,0,.12)}
+.acc__btn{
+  width:100%;
+  padding:22px 0;
+  background:transparent;
+  border:0;
+  text-align:left;
+  font-weight:900;
+  letter-spacing:.18em;
+  cursor:pointer;
+}
+.acc__panel{padding:0 0 22px;color:rgba(0,0,0,.6);line-height:2}
+
+.menuBtns{display:grid;gap:18px;margin:34px auto 0;max-width:520px}
+.menuBtn{
+  text-align:center;
+  padding:18px 18px;
+  border:2px solid #b89f78;
+  color:#b89f78;
+  letter-spacing:.18em;
+  font-weight:800;
+}
+
+/* ===== BLUE ACC ===== */
+.pad0{padding:0}
+.blueAcc{padding:46px 22px}
+.blueAcc__btn{
+  width:100%;
+  background:transparent;
+  border:0;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  cursor:pointer;
+}
+.blueAcc__t{
+  font-family:"Georgia",serif;
+  font-size:52px;
+  text-decoration:underline;
+}
+.blueAcc__i{font-size:26px;opacity:.9}
+.blueAcc__p{margin:22px auto 22px;max-width:640px;line-height:2;opacity:.95}
+.blueAcc__sep{height:2px;background:rgba(255,255,255,.25);width:92%;margin:22px auto}
+
+/* ===== CONTACT FORM (sabbia) ===== */
+.formWrap{padding-top:64px;padding-bottom:64px}
+.formTitle{margin-bottom:34px}
+.form{max-width:680px;margin:0 auto}
+.f{display:block;text-align:left;margin:18px 0}
+.f span{display:block;opacity:.85;letter-spacing:.14em;margin-bottom:10px}
+.f input,.f textarea{
+  width:100%;
+  background:transparent;
+  border:0;
+  border-bottom:2px solid rgba(255,255,255,.6);
+  color:#fff;
+  padding:12px 2px;
+  outline:none;
+  font-size:16px;
+}
+.chk{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  margin:26px 0;
+  text-align:left;
+  opacity:.95;
+  line-height:1.8;
+}
+.chk input{margin-top:4px;width:18px;height:18px}
+.formBtn{
+  width:100%;
+  padding:18px;
+  background:#fff;
+  border:0;
+  color:#b89f78;
+  letter-spacing:.18em;
+  font-weight:900;
+  cursor:pointer;
+}
