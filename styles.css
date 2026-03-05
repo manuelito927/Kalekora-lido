@@ -29,12 +29,22 @@ body{
   top:0;
   z-index:20;
 }
-.topbar__left{display:flex;gap:14px;align-items:center}
+.topbar__left{
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
 .icon{
   color:#fff;
-  font-weight:700;
   opacity:.95;
-  font-size:18px;
+  font-size:16px;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;
+  height:22px;
 }
 .topbar__right{position:relative}
 .lang{
