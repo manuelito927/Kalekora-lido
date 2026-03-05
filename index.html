@@ -3,401 +3,171 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Macramè — Beach • Food • Music</title>
-  <meta name="description" content="Beach club, ristorante, eventi e cocktail. Prenota ora." />
-  <meta name="theme-color" content="#0b0f14" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Macramè — Beach • Food • Music" />
-  <meta property="og:description" content="Beach club, ristorante, eventi e cocktail. Prenota ora." />
-  <meta property="og:type" content="website" />
-
-  <link rel="stylesheet" href="./styles.css" />
+  <title>Brand — Apulian Beach Experience</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="container topbar__inner">
-      <div class="topbar__left">
-        <a class="chip" href="tel:+390000000000" aria-label="Chiama">
-          <span class="dot"></span><span data-i18n="top_call">Chiama</span>
-        </a>
-        <a class="chip" href="https://wa.me/390000000000" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-          <span class="dot dot--green"></span>WhatsApp
-        </a>
-        <a class="chip" href="#contatti">
-          <span class="dot dot--amber"></span><span data-i18n="top_open">Aperto oggi</span>
-        </a>
-      </div>
 
-      <div class="topbar__right">
-        <button class="lang" type="button" id="langToggle" aria-label="Cambia lingua">
-          <span class="lang__pill" id="langPill">IT</span>
-          <span class="lang__hint" data-i18n="lang_hint">English</span>
-        </button>
+  <!-- TOP BAR (social + call + language) -->
+  <div class="topbar">
+    <div class="topbar__left">
+      <a class="icon" href="#" aria-label="Instagram">⌁</a>
+      <a class="icon" href="#" aria-label="Facebook">f</a>
+      <a class="icon" href="#" aria-label="YouTube">▶</a>
+      <a class="icon" href="#" aria-label="TikTok">♪</a>
+      <a class="icon" href="#" aria-label="Email">✉</a>
+      <a class="icon" href="tel:+390000000000" aria-label="Telefono">☎</a>
+    </div>
+
+    <div class="topbar__right">
+      <button class="lang" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span id="langLabel">IT</span> <span class="chev">▾</span>
+      </button>
+      <div class="lang__menu" id="langMenu" role="listbox" aria-label="Lingua" hidden>
+        <button type="button" data-lang="it" class="lang__opt">IT</button>
+        <button type="button" data-lang="en" class="lang__opt">EN</button>
       </div>
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a class="brand" href="#home" aria-label="Home">
-        <span class="brand__mark">M</span>
-        <span class="brand__name">Macramè</span>
-      </a>
-
-      <nav class="nav" aria-label="Navigazione principale">
-        <a href="#spiaggia" data-i18n="nav_beach">Spiaggia</a>
-        <a href="#ristorante" data-i18n="nav_food">Ristorante</a>
-        <a href="#eventi" data-i18n="nav_events">Eventi</a>
-        <a href="#club" data-i18n="nav_club">Club</a>
-        <a href="#bar" data-i18n="nav_bar">Bar</a>
-        <a href="#foto" data-i18n="nav_gallery">Foto</a>
-        <a href="#contatti" data-i18n="nav_contacts">Contatti</a>
-      </nav>
-
-      <div class="header__actions">
-        <a class="btn btn--ghost" href="#eventi" data-i18n="btn_calendar">Calendario</a>
-        <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book">Prenota</a>
-
-        <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="mobile" id="mobile" hidden>
-      <div class="container mobile__inner">
-        <a href="#spiaggia" data-i18n="nav_beach">Spiaggia</a>
-        <a href="#ristorante" data-i18n="nav_food">Ristorante</a>
-        <a href="#eventi" data-i18n="nav_events">Eventi</a>
-        <a href="#club" data-i18n="nav_club">Club</a>
-        <a href="#bar" data-i18n="nav_bar">Bar</a>
-        <a href="#foto" data-i18n="nav_gallery">Foto</a>
-        <a href="#contatti" data-i18n="nav_contacts">Contatti</a>
-        <div class="mobile__cta">
-          <a class="btn btn--ghost" href="tel:+390000000000" data-i18n="btn_call">Chiama</a>
-          <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book">Prenota</a>
+  <!-- HEADER (logo + hamburger) -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="brand">
+        <!-- sostituisci con tuo logo -->
+        <div class="brand__mark">◎</div>
+        <div class="brand__text">
+          <div class="brand__name">macramè</div>
+          <div class="brand__sub">APULIAN BEACH EXPERIENCE</div>
         </div>
       </div>
+
+      <button class="hamb" id="hamb" type="button" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+
+    <!-- MENU (slide down) -->
+    <nav class="menu" id="menu" hidden>
+      <a href="#welcome" data-i18n="nav_welcome">Benvenuti</a>
+      <a href="#coast" data-i18n="nav_coast">Costa</a>
+      <a href="#experience" data-i18n="nav_exp">Esperienza</a>
+      <a href="#contact" data-i18n="nav_contact">Contatti</a>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <main id="home">
-    <section class="hero">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__inner">
-        <p class="kicker" data-i18n="hero_kicker">Beach • Food • Music</p>
-        <h1 class="hero__title" data-i18n="hero_title">
-          Un posto dove il mare incontra la notte.
-        </h1>
-        <p class="hero__subtitle" data-i18n="hero_subtitle">
-          Spiaggia, ristorante e cocktail bar con eventi e DJ set. Prenota il tuo tavolo o la tua postazione.
-        </p>
+  <!-- HERO (full image + handwriting text + INFO button) -->
+  <section class="hero">
+    <!-- sostituisci immagine -->
+    <img class="hero__img" src="https://images.unsplash.com/photo-1520975958225-5f61f39b20e7?q=80&w=1400&auto=format&fit=crop" alt="">
+    <div class="hero__overlay"></div>
 
-        <div class="hero__cta">
-          <a class="btn btn--xl" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="hero_primary">
-            Prenota ora
-          </a>
-          <a class="btn btn--xl btn--ghost" href="#eventi" data-i18n="hero_secondary">
-            Scopri gli eventi
-          </a>
+    <div class="hero__content">
+      <h1 class="hero__title">Walking<br>on<br>sunshine</h1>
+      <a class="btn" href="#welcome" data-i18n="btn_info">INFO</a>
+    </div>
+  </section>
+
+  <!-- ARCH IMAGE BLOCK -->
+  <section class="arch">
+    <div class="arch__frame">
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1400&auto=format&fit=crop" alt="">
+    </div>
+  </section>
+
+  <!-- WELCOME TEXT -->
+  <section class="welcome" id="welcome">
+    <h2 class="welcome__title">
+      <span class="caps" data-i18n="welcome_caps">BENVENUTI AL</span>
+      <span class="script">Brand</span>
+    </h2>
+
+    <p class="welcome__text" data-i18n="welcome_text">
+      Respira profondamente e immergiti nella bellezza della tua costa.
+      Ammira la sabbia e le acque scintillanti. Assapora i prodotti locali,
+      dal tuo lettino in spiaggia o nel nostro ristorante in riva al mare.
+    </p>
+
+    <a class="link" href="#coast" data-i18n="welcome_cta">PRENOTA LA TUA POSTAZIONE</a>
+  </section>
+
+  <!-- COAST CARD (textured) -->
+  <section class="panel panel--blue" id="coast">
+    <div class="panel__inner">
+      <h3 class="panel__title">
+        <span class="caps" data-i18n="coast_caps">SULLA COSTA</span>
+        <span class="script white" data-i18n="coast_script">Pugliese</span>
+      </h3>
+
+      <p class="panel__lead" data-i18n="coast_lead">Goditi l’intera giornata sulla nostra spiaggia.</p>
+
+      <p class="panel__text" data-i18n="coast_text">
+        Il nostro beach club è situato in una parte naturale della costa.
+        Esperienze e atmosfera riflettono un’anima libera, curiosa e moderna.
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="panel__ctaTitle" data-i18n="coast_ctaTitle">SCEGLI LA TUA POSTAZIONE IN RIVA AL MARE</p>
+      <a class="panel__cta" href="#" data-i18n="coast_cta">PRENOTA</a>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP (2 pics like screenshot) -->
+  <section class="photos">
+    <div class="photos__inner">
+      <img src="https://images.unsplash.com/photo-1526481280695-3c687fd5432c?q=80&w=1200&auto=format&fit=crop" alt="">
+      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop" alt="">
+    </div>
+  </section>
+
+  <!-- EXPERIENCE (textured brown + 3 blocks icons) -->
+  <section class="panel panel--sand" id="experience">
+    <div class="panel__inner center">
+      <h3 class="panel__title">
+        <span class="caps white" data-i18n="exp_caps">UN’ESPERIENZA COMPLETA</span>
+        <span class="script white" data-i18n="exp_script">per tutta la giornata</span>
+      </h3>
+
+      <div class="exp">
+        <div class="exp__item">
+          <div class="exp__icon">☂</div>
+          <div class="exp__name" data-i18n="exp_1_t">LIDO</div>
+          <div class="exp__desc" data-i18n="exp_1_d">Il luogo ideale per vivere la tua estate.</div>
         </div>
 
-        <div class="hero__stats">
-          <div class="stat">
-            <span class="stat__n">☀️</span>
-            <span class="stat__t" data-i18n="stat_1">Lido & lettini</span>
-          </div>
-          <div class="stat">
-            <span class="stat__n">🍽️</span>
-            <span class="stat__t" data-i18n="stat_2">Cucina mediterranea</span>
-          </div>
-          <div class="stat">
-            <span class="stat__n">🎧</span>
-            <span class="stat__t" data-i18n="stat_3">DJ set & live</span>
-          </div>
-        </div>
-      </div>
+        <div class="line"></div>
 
-      <a class="scroll" href="#spiaggia" aria-label="Scorri">
-        <span></span>
-      </a>
-    </section>
-
-    <!-- Quick cards -->
-    <section class="strip">
-      <div class="container strip__grid">
-        <a class="card" href="#spiaggia">
-          <div class="card__icon">🏖️</div>
-          <div>
-            <h3 data-i18n="card_beach_title">Spiaggia</h3>
-            <p data-i18n="card_beach_text">Postazioni, ombrelloni, comfort e relax.</p>
-          </div>
-        </a>
-
-        <a class="card" href="#ristorante">
-          <div class="card__icon">🍝</div>
-          <div>
-            <h3 data-i18n="card_food_title">Ristorante</h3>
-            <p data-i18n="card_food_text">Sapori di mare, stagionalità e qualità.</p>
-          </div>
-        </a>
-
-        <a class="card" href="#eventi">
-          <div class="card__icon">🎟️</div>
-          <div>
-            <h3 data-i18n="card_events_title">Eventi</h3>
-            <p data-i18n="card_events_text">Calendario serate, special guest, party.</p>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Sections -->
-    <section class="section" id="spiaggia">
-      <div class="container section__grid">
-        <div>
-          <p class="eyebrow" data-i18n="beach_eyebrow">Day experience</p>
-          <h2 data-i18n="beach_title">Spiaggia</h2>
-          <p class="lead" data-i18n="beach_text">
-            Goditi il mare con postazioni curate, servizi e attenzione ai dettagli. Ideale per relax, pranzo vista mare e tramonti.
-          </p>
-          <div class="actions">
-            <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book_beach">Prenota postazione</a>
-            <a class="btn btn--ghost" href="#contatti" data-i18n="btn_info">Info</a>
-          </div>
-        </div>
-        <div class="media media--1" role="img" aria-label="Spiaggia"></div>
-      </div>
-    </section>
-
-    <section class="section section--alt" id="ristorante">
-      <div class="container section__grid">
-        <div class="media media--2" role="img" aria-label="Ristorante"></div>
-        <div>
-          <p class="eyebrow" data-i18n="food_eyebrow">Food experience</p>
-          <h2 data-i18n="food_title">Ristorante</h2>
-          <p class="lead" data-i18n="food_text">
-            Una cucina mediterranea contemporanea: materie prime, pesce, vini e cocktail pensati per accompagnare ogni momento.
-          </p>
-          <div class="actions">
-            <a class="btn" href="https://example.com/menu" target="_blank" rel="noreferrer" data-i18n="btn_menu">Vedi menu</a>
-            <a class="btn btn--ghost" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book_table">Prenota tavolo</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="eventi">
-      <div class="container">
-        <div class="section__head">
-          <div>
-            <p class="eyebrow" data-i18n="events_eyebrow">Night experience</p>
-            <h2 data-i18n="events_title">Eventi</h2>
-            <p class="lead" data-i18n="events_text">
-              Serate con DJ set, live e format speciali. Tieni d’occhio il calendario e prenota in anticipo.
-            </p>
-          </div>
-          <a class="btn btn--ghost" href="https://example.com/eventi" target="_blank" rel="noreferrer" data-i18n="btn_all_events">Tutti gli eventi</a>
+        <div class="exp__item">
+          <div class="exp__icon">🍴</div>
+          <div class="exp__name" data-i18n="exp_2_t">RISTORANTE</div>
+          <div class="exp__desc" data-i18n="exp_2_d">Cucina e prodotti locali in riva al mare.</div>
         </div>
 
-        <div class="events">
-          <article class="event">
-            <p class="event__date">VEN • 22:00</p>
-            <h3 class="event__title" data-i18n="ev1_title">Friday Grooves</h3>
-            <p class="event__desc" data-i18n="ev1_desc">House & nu-disco, cocktail special, atmosfera sul mare.</p>
-          </article>
+        <div class="line"></div>
 
-          <article class="event">
-            <p class="event__date">SAB • 23:00</p>
-            <h3 class="event__title" data-i18n="ev2_title">Saturday Night</h3>
-            <p class="event__desc" data-i18n="ev2_desc">Main set + guest, dancefloor e tavoli.</p>
-          </article>
-
-          <article class="event">
-            <p class="event__date">DOM • 19:00</p>
-            <h3 class="event__title" data-i18n="ev3_title">Sunset Ritual</h3>
-            <p class="event__desc" data-i18n="ev3_desc">Chill, tramonto e vibes soft fino a sera.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--alt" id="club">
-      <div class="container section__grid">
-        <div>
-          <p class="eyebrow" data-i18n="club_eyebrow">Late night</p>
-          <h2 data-i18n="club_title">Club</h2>
-          <p class="lead" data-i18n="club_text">
-            Tavoli, bottle service e musica. Una notte intensa con un sound curato e un’esperienza premium.
-          </p>
-          <div class="actions">
-            <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book_table2">Prenota tavolo</a>
-            <a class="btn btn--ghost" href="#contatti" data-i18n="btn_contact">Contattaci</a>
-          </div>
-        </div>
-        <div class="media media--3" role="img" aria-label="Club"></div>
-      </div>
-    </section>
-
-    <section class="section" id="bar">
-      <div class="container section__grid">
-        <div class="media media--4" role="img" aria-label="Bar"></div>
-        <div>
-          <p class="eyebrow" data-i18n="bar_eyebrow">Cocktail</p>
-          <h2 data-i18n="bar_title">Bar</h2>
-          <p class="lead" data-i18n="bar_text">
-            Signature cocktail, classici e selezione di distillati. Perfetto dal tramonto in poi.
-          </p>
-          <div class="actions">
-            <a class="btn" href="https://example.com/menu" target="_blank" rel="noreferrer" data-i18n="btn_drink_list">Drink list</a>
-            <a class="btn btn--ghost" href="#foto" data-i18n="btn_see_photos">Vedi foto</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery -->
-    <section class="gallery" id="foto">
-      <div class="container">
-        <div class="section__head">
-          <div>
-            <p class="eyebrow" data-i18n="gallery_eyebrow">Atmosfera</p>
-            <h2 data-i18n="gallery_title">Foto</h2>
-            <p class="lead" data-i18n="gallery_text">Una selezione di scatti: giorno, tramonto, notte.</p>
-          </div>
+        <div class="exp__item">
+          <div class="exp__icon">🍸</div>
+          <div class="exp__name" data-i18n="exp_3_t">LOUNGE BAR</div>
+          <div class="exp__desc" data-i18n="exp_3_d">Drink e aperitivi dall’alba al tramonto.</div>
         </div>
 
-        <div class="grid">
-          <div class="ph ph--a"></div>
-          <div class="ph ph--b"></div>
-          <div class="ph ph--c"></div>
-          <div class="ph ph--d"></div>
-          <div class="ph ph--e"></div>
-          <div class="ph ph--f"></div>
+        <div class="line"></div>
+
+        <div class="exp__item">
+          <div class="exp__icon">♪</div>
+          <div class="exp__name" data-i18n="exp_4_t">EVENTI</div>
+          <div class="exp__desc" data-i18n="exp_4_d">Live music, DJ set ed eventi privati.</div>
         </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contatti">
-      <div class="container contact__grid">
-        <div class="contact__card">
-          <h2 data-i18n="contact_title">Contatti</h2>
-          <p class="lead" data-i18n="contact_text">
-            Prenotazioni e info. Rispondiamo il prima possibile.
-          </p>
-
-          <div class="contact__info">
-            <div class="info">
-              <span class="info__k" data-i18n="contact_phone">Telefono</span>
-              <a class="info__v" href="tel:+390000000000">+39 000 000 0000</a>
-            </div>
-            <div class="info">
-              <span class="info__k">WhatsApp</span>
-              <a class="info__v" href="https://wa.me/390000000000" target="_blank" rel="noreferrer">+39 000 000 0000</a>
-            </div>
-            <div class="info">
-              <span class="info__k" data-i18n="contact_email">Email</span>
-              <a class="info__v" href="mailto:info@example.com">info@example.com</a>
-            </div>
-            <div class="info">
-              <span class="info__k" data-i18n="contact_addr">Indirizzo</span>
-              <span class="info__v">Monopoli (BA), Puglia</span>
-            </div>
-          </div>
-
-          <form class="form" id="contactForm">
-            <div class="row">
-              <label>
-                <span data-i18n="form_name">Nome</span>
-                <input name="name" required placeholder="Mario Rossi" />
-              </label>
-              <label>
-                <span data-i18n="form_phone">Telefono</span>
-                <input name="phone" placeholder="+39..." />
-              </label>
-            </div>
-
-            <label>
-              <span data-i18n="form_email">Email</span>
-              <input name="email" type="email" required placeholder="mario@email.com" />
-            </label>
-
-            <label>
-              <span data-i18n="form_message">Messaggio</span>
-              <textarea name="message" required rows="4" placeholder="Scrivi qui..."></textarea>
-            </label>
-
-            <button class="btn btn--xl" type="submit" data-i18n="form_send">Invia</button>
-            <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
-          </form>
-
-          <div class="newsletter">
-            <h3 data-i18n="nl_title">Newsletter</h3>
-            <p data-i18n="nl_text">Eventi e aggiornamenti, senza spam.</p>
-
-            <form class="nl__form" id="nlForm">
-              <input name="email" type="email" required placeholder="email@domain.com" />
-              <button class="btn" type="submit" data-i18n="nl_btn">Iscriviti</button>
-            </form>
-            <p class="form__note" id="nlNote" role="status" aria-live="polite"></p>
-          </div>
-        </div>
-
-        <div class="map">
-          <div class="map__frame">
-            <!-- Sostituisci con la tua mappa -->
-            <iframe
-              title="Mappa"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Monopoli%20BA&output=embed">
-            </iframe>
-          </div>
-
-          <div class="map__cta">
-            <a class="btn btn--ghost" href="https://maps.google.com/?q=Monopoli%20BA" target="_blank" rel="noreferrer" data-i18n="btn_directions">
-              Indicazioni
-            </a>
-            <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book">
-              Prenota
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="brand__mark brand__mark--sm">M</span>
-        <div>
-          <strong>Macramè</strong>
-          <div class="muted">Monopoli • Puglia</div>
-        </div>
-      </div>
-
-      <div class="footer__links">
-        <a href="#home" data-i18n="footer_home">Home</a>
-        <a href="#eventi" data-i18n="footer_events">Eventi</a>
-        <a href="#contatti" data-i18n="footer_contacts">Contatti</a>
-      </div>
-
-      <div class="footer__legal muted">
-        <span>© <span id="year"></span> Macramè</span>
-        <span>•</span>
-        <a href="#" class="muted" data-i18n="footer_privacy">Privacy</a>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script src="./script.js"></script>
+  <section class="contact" id="contact">
+    <h3 data-i18n="contact_t">Contatti</h3>
+    <p><a href="tel:+390000000000">+39 000 000 0000</a> • <a href="mailto:info@example.com">info@example.com</a></p>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
