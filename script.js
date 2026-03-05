@@ -126,3 +126,26 @@ langMenu.querySelectorAll("[data-lang]").forEach(btn => {
 
 // default lingua
 applyLang(localStorage.getItem("lang") === "en" ? "en" : "it");
+
+// accordion (menu + blue)
+document.querySelectorAll(".acc__btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const panel = btn.parentElement.querySelector(".acc__panel");
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!open));
+    panel.hidden = open;
+  });
+});
+
+document.querySelectorAll(".blueAcc__btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const next = btn.nextElementSibling;
+    if (!next || !next.classList.contains("blueAcc__panel")) return;
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!open));
+    next.hidden = open;
+    const arrow = btn.querySelector(".blueAcc__i");
+    if (arrow) arrow.textContent = open ? "v" : "^";
+  });
+});
+
