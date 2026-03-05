@@ -149,3 +149,36 @@ document.querySelectorAll(".blueAcc__btn").forEach(btn => {
   });
 });
 
+
+// Partners slider (demo)
+const partners = [
+  "https://dummyimage.com/520x260/bba27c/ffffff&text=RADIO+NORBA",
+  "https://dummyimage.com/520x260/86a0b2/ffffff&text=PARTNER+2",
+  "https://dummyimage.com/520x260/a48e6a/ffffff&text=PARTNER+3"
+];
+
+let pIndex = 0;
+const pImg = document.getElementById("pImg");
+const pPrev = document.getElementById("pPrev");
+const pNext = document.getElementById("pNext");
+
+function renderPartner(){
+  if(!pImg) return;
+  pImg.src = partners[pIndex];
+}
+pPrev?.addEventListener("click", () => {
+  pIndex = (pIndex - 1 + partners.length) % partners.length;
+  renderPartner();
+});
+pNext?.addEventListener("click", () => {
+  pIndex = (pIndex + 1) % partners.length;
+  renderPartner();
+});
+renderPartner();
+
+// Newsletter (demo)
+document.querySelector(".newsForm")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Iscrizione inviata! (demo)");
+  e.target.reset();
+});
