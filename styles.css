@@ -81,25 +81,38 @@ body{
   justify-content:space-between;
   padding: 18px 18px;
 }
-.brand{display:flex;gap:14px;align-items:center}
+.brand{
+  display:flex;
+  gap:14px;
+  align-items:flex-start; /* <-- come in foto: logo “su”, testo parte dall’alto */
+}
+
 .brand__mark{
-  width:56px;height:56px;border-radius:999px;
-  display:grid;place-items:center;
+  width:64px;
+  height:64px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
   background: rgba(0,0,0,.06);
   font-size:22px;
+  margin-top:2px; /* leggero offset come screenshot */
 }
+
+/* testo più grande come originale */
 .brand__name{
   font-family: "Georgia", serif;
   font-style: italic;
-  font-size:42px;
-  line-height:1;
-  color: #b89f78;
-}
-.brand__sub{
-  font-size:12px;
-  letter-spacing:.22em;
+  font-size:52px;      /* <-- più grande */
+  line-height:0.95;
   color:#b89f78;
-  margin-top:6px;
+  letter-spacing:0.02em;
+}
+
+.brand__sub{
+  font-size:13px;
+  letter-spacing:.28em;
+  color:#b89f78;
+  margin-top:8px;
 }
 
 .hamb{
