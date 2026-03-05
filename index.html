@@ -1,15 +1,249 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<title>Kalekora Lido</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalekora Lido</title>
+
+  <!-- Font simili a quelli che vedo nelle foto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;600&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --text-dark: #1D1D1B;
+      --white: #ffffff;
+      --header-bg: #f4f4f4; /* cambia se serve */
+      --btn-bg: rgba(255,255,255,0.85);
+      --btn-border: rgba(0,0,0,0.10);
+      --overlay: rgba(0,0,0,0.18); /* scurimento immagine (regola se serve) */
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      font-family: Karla, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text-dark);
+      background: #fff;
+    }
+
+    /* HEADER */
+    .header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--header-bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .header-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+    }
+    .brand img{
+      width: 200px;  /* dalle tue foto */
+      height: auto;
+      display: block;
+    }
+
+    .header-right{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang{
+      font-size: 14px;
+      border: none;
+      background: transparent;
+      padding: 6px 8px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .burger{
+      width: 44px;
+      height: 40px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.35);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+    .burger span{
+      width: 18px;
+      height: 2px;
+      background: rgba(0,0,0,0.45);
+      display: block;
+      position: relative;
+    }
+    .burger span::before,
+    .burger span::after{
+      content:"";
+      position:absolute;
+      left:0;
+      width: 18px;
+      height: 2px;
+      background: rgba(0,0,0,0.45);
+    }
+    .burger span::before{ top: -6px; }
+    .burger span::after{ top: 6px; }
+
+    /* HERO */
+    .hero{
+      position: relative;
+      min-height: 75vh; /* nelle tue foto si vede circa così */
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(var(--overlay), var(--overlay)),
+        url("hero.jpg");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+    }
+
+    .hero-content{
+      position: relative;
+      text-align: center;
+      padding: 40px 18px;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .hero-title{
+      margin: 0 0 22px 0;
+      color: var(--white);
+      font-family: "Petit Formal Script", cursive;
+      font-size: clamp(42px, 6vw, 72px); /* regola per farla uguale */
+      font-weight: 400;
+      line-height: 1.05;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.25);
+    }
+
+    .hero-btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      font-family: Karla, sans-serif;
+      font-size: 15px;              /* nella tua foto: 15px */
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      padding: 12px 34px;           /* regola per farla uguale */
+      min-width: 140px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .hero-btn:hover{
+      background: rgba(255,255,255,0.95);
+    }
+
+    /* MENU (semplice demo) */
+    .menu{
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(360px, 88vw);
+      height: 100vh;
+      background: #fff;
+      border-left: 1px solid rgba(0,0,0,0.08);
+      box-shadow: -18px 0 40px rgba(0,0,0,0.15);
+      padding: 18px;
+      z-index: 100;
+    }
+    .menu.open{ display:block; }
+    .menu h3{
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .menu a{
+      display:block;
+      padding: 10px 0;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .menu-close{
+      border: 1px solid rgba(0,0,0,0.15);
+      background: #fff;
+      padding: 8px 12px;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+  </style>
 </head>
 
 <body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <!-- Metti il tuo logo -->
+        <img src="logo.png" alt="Logo" />
+      </div>
 
-<h1>Kalekora Lido</h1>
+      <div class="header-right">
+        <select class="lang" aria-label="Lingua">
+          <option>IT</option>
+          <option>EN</option>
+        </select>
 
-<p>Benvenuto nel sito ufficiale del Kalekora.</p>
+        <button class="burger" id="openMenu" aria-label="Apri menu">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero" aria-label="Hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Walking on sunshine</h1>
+        <a class="hero-btn" href="#info">INFO</a>
+      </div>
+    </section>
+  </main>
+
+  <aside class="menu" id="menu">
+    <button class="menu-close" id="closeMenu">Chiudi</button>
+    <h3>Menu</h3>
+    <a href="#info">Info</a>
+    <a href="#ristorante">Ristorante</a>
+    <a href="#contatti">Contatti</a>
+  </aside>
+
+  <script>
+    const menu = document.getElementById('menu');
+    document.getElementById('openMenu').addEventListener('click', () => menu.classList.add('open'));
+    document.getElementById('closeMenu').addEventListener('click', () => menu.classList.remove('open'));
+  </script>
 </body>
 </html>
