@@ -328,3 +328,59 @@ body{
   .panel__title .script{font-size:54px}
   .arch__frame img{height: 460px}
 }
+
+/* ===== MENU OVERLAY (come screenshot) ===== */
+.overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background: #f2f2ee;
+  overflow:auto;
+}
+
+.overlay__top{
+  background: var(--sand);
+  padding: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.close{
+  width:56px;height:56px;
+  border:0;
+  border-radius:6px;
+  background: rgba(255,255,255,.14);
+  color:#fff;
+  font-size:34px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.overlay__nav{
+  padding: 26px 22px 40px;
+  display:flex;
+  flex-direction:column;
+  gap: 22px;
+}
+
+.overlay__nav a{
+  font-size: 26px;
+  letter-spacing: .14em;
+  color: rgba(0,0,0,.75);
+  font-weight: 500;
+}
+
+.overlay__nav a:first-child{
+  color: rgba(0,0,0,.35);
+}
+
+.overlay__cta{
+  margin-top: 14px;
+  font-size: 18px !important;
+  letter-spacing: .18em;
+  font-weight: 700;
+  color: rgba(0,0,0,.65) !important;
+}
+
+
