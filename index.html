@@ -1,249 +1,403 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kalekora Lido</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Macramè — Beach • Food • Music</title>
+  <meta name="description" content="Beach club, ristorante, eventi e cocktail. Prenota ora." />
+  <meta name="theme-color" content="#0b0f14" />
 
-  <!-- Font simili a quelli che vedo nelle foto -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;600&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Macramè — Beach • Food • Music" />
+  <meta property="og:description" content="Beach club, ristorante, eventi e cocktail. Prenota ora." />
+  <meta property="og:type" content="website" />
 
-  <style>
-    :root{
-      --text-dark: #1D1D1B;
-      --white: #ffffff;
-      --header-bg: #f4f4f4; /* cambia se serve */
-      --btn-bg: rgba(255,255,255,0.85);
-      --btn-border: rgba(0,0,0,0.10);
-      --overlay: rgba(0,0,0,0.18); /* scurimento immagine (regola se serve) */
-    }
-
-    *{ box-sizing: border-box; }
-    body{
-      margin: 0;
-      font-family: Karla, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text-dark);
-      background: #fff;
-    }
-
-    /* HEADER */
-    .header{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--header-bg);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .header-inner{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 18px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .brand{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 200px;
-    }
-    .brand img{
-      width: 200px;  /* dalle tue foto */
-      height: auto;
-      display: block;
-    }
-
-    .header-right{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .lang{
-      font-size: 14px;
-      border: none;
-      background: transparent;
-      padding: 6px 8px;
-      cursor: pointer;
-      color: #333;
-    }
-
-    .burger{
-      width: 44px;
-      height: 40px;
-      border: 1px solid rgba(0,0,0,0.12);
-      background: rgba(255,255,255,0.35);
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-    }
-    .burger span{
-      width: 18px;
-      height: 2px;
-      background: rgba(0,0,0,0.45);
-      display: block;
-      position: relative;
-    }
-    .burger span::before,
-    .burger span::after{
-      content:"";
-      position:absolute;
-      left:0;
-      width: 18px;
-      height: 2px;
-      background: rgba(0,0,0,0.45);
-    }
-    .burger span::before{ top: -6px; }
-    .burger span::after{ top: 6px; }
-
-    /* HERO */
-    .hero{
-      position: relative;
-      min-height: 75vh; /* nelle tue foto si vede circa così */
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(var(--overlay), var(--overlay)),
-url("assets/hero.jpg");
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.02);
-    }
-
-    .hero-content{
-      position: relative;
-      text-align: center;
-      padding: 40px 18px;
-      max-width: 1100px;
-      width: 100%;
-    }
-
-    .hero-title{
-      margin: 0 0 22px 0;
-      color: var(--white);
-      font-family: "Petit Formal Script", cursive;
-      font-size: clamp(42px, 6vw, 72px); /* regola per farla uguale */
-      font-weight: 400;
-      line-height: 1.05;
-      text-shadow: 0 2px 18px rgba(0,0,0,0.25);
-    }
-
-    .hero-btn{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-
-      font-family: Karla, sans-serif;
-      font-size: 15px;              /* nella tua foto: 15px */
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-dark);
-
-      background: var(--btn-bg);
-      border: 1px solid var(--btn-border);
-      padding: 12px 34px;           /* regola per farla uguale */
-      min-width: 140px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .hero-btn:hover{
-      background: rgba(255,255,255,0.95);
-    }
-
-    /* MENU (semplice demo) */
-    .menu{
-      display: none;
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: min(360px, 88vw);
-      height: 100vh;
-      background: #fff;
-      border-left: 1px solid rgba(0,0,0,0.08);
-      box-shadow: -18px 0 40px rgba(0,0,0,0.15);
-      padding: 18px;
-      z-index: 100;
-    }
-    .menu.open{ display:block; }
-    .menu h3{
-      margin: 0 0 12px 0;
-      font-size: 16px;
-      font-weight: 600;
-    }
-    .menu a{
-      display:block;
-      padding: 10px 0;
-      color: #333;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-    .menu-close{
-      border: 1px solid rgba(0,0,0,0.15);
-      background: #fff;
-      padding: 8px 12px;
-      cursor: pointer;
-      margin-bottom: 12px;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body>
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">
-        <!-- Metti il tuo logo -->
-        <img src="logo.png" alt="Logo" />
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <a class="chip" href="tel:+390000000000" aria-label="Chiama">
+          <span class="dot"></span><span data-i18n="top_call">Chiama</span>
+        </a>
+        <a class="chip" href="https://wa.me/390000000000" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+          <span class="dot dot--green"></span>WhatsApp
+        </a>
+        <a class="chip" href="#contatti">
+          <span class="dot dot--amber"></span><span data-i18n="top_open">Aperto oggi</span>
+        </a>
       </div>
 
-      <div class="header-right">
-        <select class="lang" aria-label="Lingua">
-          <option>IT</option>
-          <option>EN</option>
-        </select>
-
-        <button class="burger" id="openMenu" aria-label="Apri menu">
-          <span></span>
+      <div class="topbar__right">
+        <button class="lang" type="button" id="langToggle" aria-label="Cambia lingua">
+          <span class="lang__pill" id="langPill">IT</span>
+          <span class="lang__hint" data-i18n="lang_hint">English</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="brand__mark">M</span>
+        <span class="brand__name">Macramè</span>
+      </a>
+
+      <nav class="nav" aria-label="Navigazione principale">
+        <a href="#spiaggia" data-i18n="nav_beach">Spiaggia</a>
+        <a href="#ristorante" data-i18n="nav_food">Ristorante</a>
+        <a href="#eventi" data-i18n="nav_events">Eventi</a>
+        <a href="#club" data-i18n="nav_club">Club</a>
+        <a href="#bar" data-i18n="nav_bar">Bar</a>
+        <a href="#foto" data-i18n="nav_gallery">Foto</a>
+        <a href="#contatti" data-i18n="nav_contacts">Contatti</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--ghost" href="#eventi" data-i18n="btn_calendar">Calendario</a>
+        <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book">Prenota</a>
+
+        <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile" id="mobile" hidden>
+      <div class="container mobile__inner">
+        <a href="#spiaggia" data-i18n="nav_beach">Spiaggia</a>
+        <a href="#ristorante" data-i18n="nav_food">Ristorante</a>
+        <a href="#eventi" data-i18n="nav_events">Eventi</a>
+        <a href="#club" data-i18n="nav_club">Club</a>
+        <a href="#bar" data-i18n="nav_bar">Bar</a>
+        <a href="#foto" data-i18n="nav_gallery">Foto</a>
+        <a href="#contatti" data-i18n="nav_contacts">Contatti</a>
+        <div class="mobile__cta">
+          <a class="btn btn--ghost" href="tel:+390000000000" data-i18n="btn_call">Chiama</a>
+          <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book">Prenota</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero" aria-label="Hero">
-      <div class="hero-content">
-        <h1 class="hero-title">Walking on sunshine</h1>
-        <a class="hero-btn" href="#info">INFO</a>
+  <!-- Hero -->
+  <main id="home">
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="kicker" data-i18n="hero_kicker">Beach • Food • Music</p>
+        <h1 class="hero__title" data-i18n="hero_title">
+          Un posto dove il mare incontra la notte.
+        </h1>
+        <p class="hero__subtitle" data-i18n="hero_subtitle">
+          Spiaggia, ristorante e cocktail bar con eventi e DJ set. Prenota il tuo tavolo o la tua postazione.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--xl" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="hero_primary">
+            Prenota ora
+          </a>
+          <a class="btn btn--xl btn--ghost" href="#eventi" data-i18n="hero_secondary">
+            Scopri gli eventi
+          </a>
+        </div>
+
+        <div class="hero__stats">
+          <div class="stat">
+            <span class="stat__n">☀️</span>
+            <span class="stat__t" data-i18n="stat_1">Lido & lettini</span>
+          </div>
+          <div class="stat">
+            <span class="stat__n">🍽️</span>
+            <span class="stat__t" data-i18n="stat_2">Cucina mediterranea</span>
+          </div>
+          <div class="stat">
+            <span class="stat__n">🎧</span>
+            <span class="stat__t" data-i18n="stat_3">DJ set & live</span>
+          </div>
+        </div>
+      </div>
+
+      <a class="scroll" href="#spiaggia" aria-label="Scorri">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- Quick cards -->
+    <section class="strip">
+      <div class="container strip__grid">
+        <a class="card" href="#spiaggia">
+          <div class="card__icon">🏖️</div>
+          <div>
+            <h3 data-i18n="card_beach_title">Spiaggia</h3>
+            <p data-i18n="card_beach_text">Postazioni, ombrelloni, comfort e relax.</p>
+          </div>
+        </a>
+
+        <a class="card" href="#ristorante">
+          <div class="card__icon">🍝</div>
+          <div>
+            <h3 data-i18n="card_food_title">Ristorante</h3>
+            <p data-i18n="card_food_text">Sapori di mare, stagionalità e qualità.</p>
+          </div>
+        </a>
+
+        <a class="card" href="#eventi">
+          <div class="card__icon">🎟️</div>
+          <div>
+            <h3 data-i18n="card_events_title">Eventi</h3>
+            <p data-i18n="card_events_text">Calendario serate, special guest, party.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Sections -->
+    <section class="section" id="spiaggia">
+      <div class="container section__grid">
+        <div>
+          <p class="eyebrow" data-i18n="beach_eyebrow">Day experience</p>
+          <h2 data-i18n="beach_title">Spiaggia</h2>
+          <p class="lead" data-i18n="beach_text">
+            Goditi il mare con postazioni curate, servizi e attenzione ai dettagli. Ideale per relax, pranzo vista mare e tramonti.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book_beach">Prenota postazione</a>
+            <a class="btn btn--ghost" href="#contatti" data-i18n="btn_info">Info</a>
+          </div>
+        </div>
+        <div class="media media--1" role="img" aria-label="Spiaggia"></div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="ristorante">
+      <div class="container section__grid">
+        <div class="media media--2" role="img" aria-label="Ristorante"></div>
+        <div>
+          <p class="eyebrow" data-i18n="food_eyebrow">Food experience</p>
+          <h2 data-i18n="food_title">Ristorante</h2>
+          <p class="lead" data-i18n="food_text">
+            Una cucina mediterranea contemporanea: materie prime, pesce, vini e cocktail pensati per accompagnare ogni momento.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://example.com/menu" target="_blank" rel="noreferrer" data-i18n="btn_menu">Vedi menu</a>
+            <a class="btn btn--ghost" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book_table">Prenota tavolo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="eventi">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow" data-i18n="events_eyebrow">Night experience</p>
+            <h2 data-i18n="events_title">Eventi</h2>
+            <p class="lead" data-i18n="events_text">
+              Serate con DJ set, live e format speciali. Tieni d’occhio il calendario e prenota in anticipo.
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="https://example.com/eventi" target="_blank" rel="noreferrer" data-i18n="btn_all_events">Tutti gli eventi</a>
+        </div>
+
+        <div class="events">
+          <article class="event">
+            <p class="event__date">VEN • 22:00</p>
+            <h3 class="event__title" data-i18n="ev1_title">Friday Grooves</h3>
+            <p class="event__desc" data-i18n="ev1_desc">House & nu-disco, cocktail special, atmosfera sul mare.</p>
+          </article>
+
+          <article class="event">
+            <p class="event__date">SAB • 23:00</p>
+            <h3 class="event__title" data-i18n="ev2_title">Saturday Night</h3>
+            <p class="event__desc" data-i18n="ev2_desc">Main set + guest, dancefloor e tavoli.</p>
+          </article>
+
+          <article class="event">
+            <p class="event__date">DOM • 19:00</p>
+            <h3 class="event__title" data-i18n="ev3_title">Sunset Ritual</h3>
+            <p class="event__desc" data-i18n="ev3_desc">Chill, tramonto e vibes soft fino a sera.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="club">
+      <div class="container section__grid">
+        <div>
+          <p class="eyebrow" data-i18n="club_eyebrow">Late night</p>
+          <h2 data-i18n="club_title">Club</h2>
+          <p class="lead" data-i18n="club_text">
+            Tavoli, bottle service e musica. Una notte intensa con un sound curato e un’esperienza premium.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book_table2">Prenota tavolo</a>
+            <a class="btn btn--ghost" href="#contatti" data-i18n="btn_contact">Contattaci</a>
+          </div>
+        </div>
+        <div class="media media--3" role="img" aria-label="Club"></div>
+      </div>
+    </section>
+
+    <section class="section" id="bar">
+      <div class="container section__grid">
+        <div class="media media--4" role="img" aria-label="Bar"></div>
+        <div>
+          <p class="eyebrow" data-i18n="bar_eyebrow">Cocktail</p>
+          <h2 data-i18n="bar_title">Bar</h2>
+          <p class="lead" data-i18n="bar_text">
+            Signature cocktail, classici e selezione di distillati. Perfetto dal tramonto in poi.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://example.com/menu" target="_blank" rel="noreferrer" data-i18n="btn_drink_list">Drink list</a>
+            <a class="btn btn--ghost" href="#foto" data-i18n="btn_see_photos">Vedi foto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="foto">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow" data-i18n="gallery_eyebrow">Atmosfera</p>
+            <h2 data-i18n="gallery_title">Foto</h2>
+            <p class="lead" data-i18n="gallery_text">Una selezione di scatti: giorno, tramonto, notte.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="ph ph--a"></div>
+          <div class="ph ph--b"></div>
+          <div class="ph ph--c"></div>
+          <div class="ph ph--d"></div>
+          <div class="ph ph--e"></div>
+          <div class="ph ph--f"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contatti">
+      <div class="container contact__grid">
+        <div class="contact__card">
+          <h2 data-i18n="contact_title">Contatti</h2>
+          <p class="lead" data-i18n="contact_text">
+            Prenotazioni e info. Rispondiamo il prima possibile.
+          </p>
+
+          <div class="contact__info">
+            <div class="info">
+              <span class="info__k" data-i18n="contact_phone">Telefono</span>
+              <a class="info__v" href="tel:+390000000000">+39 000 000 0000</a>
+            </div>
+            <div class="info">
+              <span class="info__k">WhatsApp</span>
+              <a class="info__v" href="https://wa.me/390000000000" target="_blank" rel="noreferrer">+39 000 000 0000</a>
+            </div>
+            <div class="info">
+              <span class="info__k" data-i18n="contact_email">Email</span>
+              <a class="info__v" href="mailto:info@example.com">info@example.com</a>
+            </div>
+            <div class="info">
+              <span class="info__k" data-i18n="contact_addr">Indirizzo</span>
+              <span class="info__v">Monopoli (BA), Puglia</span>
+            </div>
+          </div>
+
+          <form class="form" id="contactForm">
+            <div class="row">
+              <label>
+                <span data-i18n="form_name">Nome</span>
+                <input name="name" required placeholder="Mario Rossi" />
+              </label>
+              <label>
+                <span data-i18n="form_phone">Telefono</span>
+                <input name="phone" placeholder="+39..." />
+              </label>
+            </div>
+
+            <label>
+              <span data-i18n="form_email">Email</span>
+              <input name="email" type="email" required placeholder="mario@email.com" />
+            </label>
+
+            <label>
+              <span data-i18n="form_message">Messaggio</span>
+              <textarea name="message" required rows="4" placeholder="Scrivi qui..."></textarea>
+            </label>
+
+            <button class="btn btn--xl" type="submit" data-i18n="form_send">Invia</button>
+            <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="newsletter">
+            <h3 data-i18n="nl_title">Newsletter</h3>
+            <p data-i18n="nl_text">Eventi e aggiornamenti, senza spam.</p>
+
+            <form class="nl__form" id="nlForm">
+              <input name="email" type="email" required placeholder="email@domain.com" />
+              <button class="btn" type="submit" data-i18n="nl_btn">Iscriviti</button>
+            </form>
+            <p class="form__note" id="nlNote" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="map">
+          <div class="map__frame">
+            <!-- Sostituisci con la tua mappa -->
+            <iframe
+              title="Mappa"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Monopoli%20BA&output=embed">
+            </iframe>
+          </div>
+
+          <div class="map__cta">
+            <a class="btn btn--ghost" href="https://maps.google.com/?q=Monopoli%20BA" target="_blank" rel="noreferrer" data-i18n="btn_directions">
+              Indicazioni
+            </a>
+            <a class="btn" href="https://example.com/prenota" target="_blank" rel="noreferrer" data-i18n="btn_book">
+              Prenota
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <aside class="menu" id="menu">
-    <button class="menu-close" id="closeMenu">Chiudi</button>
-    <h3>Menu</h3>
-    <a href="#info">Info</a>
-    <a href="#ristorante">Ristorante</a>
-    <a href="#contatti">Contatti</a>
-  </aside>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__mark brand__mark--sm">M</span>
+        <div>
+          <strong>Macramè</strong>
+          <div class="muted">Monopoli • Puglia</div>
+        </div>
+      </div>
 
-  <script>
-    const menu = document.getElementById('menu');
-    document.getElementById('openMenu').addEventListener('click', () => menu.classList.add('open'));
-    document.getElementById('closeMenu').addEventListener('click', () => menu.classList.remove('open'));
-  </script>
+      <div class="footer__links">
+        <a href="#home" data-i18n="footer_home">Home</a>
+        <a href="#eventi" data-i18n="footer_events">Eventi</a>
+        <a href="#contatti" data-i18n="footer_contacts">Contatti</a>
+      </div>
+
+      <div class="footer__legal muted">
+        <span>© <span id="year"></span> Macramè</span>
+        <span>•</span>
+        <a href="#" class="muted" data-i18n="footer_privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
 </body>
 </html>
