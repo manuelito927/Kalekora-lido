@@ -1,22 +1,34 @@
-// menu hamburger
+// ===== MENU OVERLAY (apre solo al tap, chiude con X) =====
 const hamb = document.getElementById("hamb");
-const menu = document.getElementById("menu");
+const overlay = document.getElementById("overlay");
+const closeMenu = document.getElementById("closeMenu");
 
-hamb.addEventListener("click", () => {
-  const isOpen = hamb.getAttribute("aria-expanded") === "true";
-  hamb.setAttribute("aria-expanded", String(!isOpen));
-  menu.hidden = isOpen;
+function openMenu() {
+  overlay.hidden = false;
+  hamb.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
+}
+
+function closeM() {
+  overlay.hidden = true;
+  hamb.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+}
+
+hamb.addEventListener("click", openMenu);
+closeMenu.addEventListener("click", closeM);
+
+// chiudi menu al click su link
+overlay?.querySelectorAll("a").forEach(a => {
+  a.addEventListener("click", closeM);
 });
 
-// chiudi menu al click
-menu?.querySelectorAll("a").forEach(a => {
-  a.addEventListener("click", () => {
-    hamb.setAttribute("aria-expanded", "false");
-    menu.hidden = true;
-  });
+// chiudi con ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && overlay && !overlay.hidden) closeM();
 });
 
-// lingua dropdown (demo)
+// ===== LINGUA DROPDOWN =====
 const langBtn = document.getElementById("langBtn");
 const langMenu = document.getElementById("langMenu");
 const langLabel = document.getElementById("langLabel");
@@ -34,7 +46,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// testi minimi IT/EN (solo per demo struttura)
+// ===== TESTI IT/EN (demo struttura) =====
 const i18n = {
   it: {
     nav_welcome: "Benvenuti",
@@ -112,4 +124,5 @@ langMenu.querySelectorAll("[data-lang]").forEach(btn => {
   });
 });
 
+// default lingua
 applyLang(localStorage.getItem("lang") === "en" ? "en" : "it");
