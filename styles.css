@@ -824,3 +824,27 @@ body{
   color:rgba(0,0,0,.75);
 }
 
+@media (max-width: 430px){
+  .topbar{
+    height:74px;
+    padding:0 18px;
+  }
+
+  .topbar__left{
+    gap:14px;
+  }
+
+  .icon{
+    width:24px;
+    height:24px;
+  }
+
+  .icon svg{
+    width:21px;
+    height:21px;
+  }
+
+  .lang{
+    font-size:16px;
+  }
+}
