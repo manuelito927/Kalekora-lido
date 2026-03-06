@@ -130,22 +130,18 @@ html,body{
 
 /* ---------- HEADER ---------- */
 .header{
-  background: #eeeee9;
-  position:sticky;
-  top:74px;
-.header{
-  background: #eeeee9;
+  background:#eeeee9;
   position:sticky;
   top:74px;
   z-index:15;
-  border-bottom: 1px solid rgba(0,0,0,.06);
+  border-bottom:1px solid rgba(0,0,0,.06);
 }
 
 .header__inner{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding: 18px 18px;
+  padding:18px 18px;
 }
 .brand{
   display:flex;
