@@ -171,10 +171,10 @@ html,body{
 }
 
 .brand__sub{
-  font-size:13px;
-  letter-spacing:.28em;
+  font-size:10px;
+  letter-spacing:.32em;
   color:#b89f78;
-  margin-top:8px;
+  margin-top:6px;
 }
 
 .hamb{
