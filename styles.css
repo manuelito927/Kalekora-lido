@@ -429,26 +429,27 @@ html,body{
   z-index:9999;
   background:#f2f2ee;
   border-top:1px solid rgba(0,0,0,.05);
-  padding-bottom:20px;
+  padding-bottom:22px;
 }
 
 .overlay__top{
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:space-between;
-  padding:22px 24px 10px;
+  padding:20px 24px 8px;
   background:#f2f2ee;
 }
 
 .overlay__top .brand{
   align-items:flex-start;
+  gap:12px;
 }
 
 .overlay__top .brand__mark{
   width:58px;
   height:58px;
   font-size:20px;
-  background:rgba(185,162,124,.18);
+  background:rgba(185,162,124,.14);
   color:#b89f78;
 }
 
@@ -456,7 +457,7 @@ html,body{
   width:48px;
   height:48px;
   border:0;
-  border-radius:6px;
+  border-radius:4px;
   background:rgba(0,0,0,.04);
   color:#b89f78;
   font-size:30px;
@@ -465,15 +466,16 @@ html,body{
 }
 
 .overlay__nav{
-  padding: 4px 42px 18px;
+  padding: 6px 42px 18px;
   display:flex;
   flex-direction:column;
-  gap:26px;
+  gap:30px;
 }
 
 .overlay__nav a{
-  font-size:18px;
-  line-height:1.2;
+  font-family: "Montserrat", sans-serif;
+  font-size:16px;
+  line-height:1.15;
   letter-spacing:.18em;
   color:rgba(0,0,0,.88);
   font-weight:500;
@@ -482,14 +484,15 @@ html,body{
 
 .overlay__nav a:first-child{
   color:#b89f78;
+  font-size:15px;
 }
 
 .overlay__cta{
-  margin-top:8px;
-  font-size:16px !important;
-  letter-spacing:.18em;
-  font-weight:700;
-  color:rgba(0,0,0,.78) !important;
+  margin-top:4px;
+  font-size:15px !important;
+  letter-spacing:.16em;
+  font-weight:500;
+  color:rgba(0,0,0,.82) !important;
 }
 
 /* ===== SHUTTLE HERO ===== */
