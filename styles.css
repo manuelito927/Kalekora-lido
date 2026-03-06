@@ -17,6 +17,10 @@ body{
   color: var(--ink);
 }
 
+html,body{
+  overflow-x:hidden;
+}
+
 /* ---------- TOPBAR ---------- */
 .topbar{
   height:86px;
