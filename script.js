@@ -183,4 +183,58 @@ document.querySelector(".newsForm")?.addEventListener("submit", (e) => {
   e.target.reset();
 });
 
+// Reveal leggero su testi, titoli, immagini e blocchi
+const revealItems = document.querySelectorAll(`
+  .welcome__title,
+  .welcome__text,
+  .link,
+  .panel__title,
+  .panel__lead,
+  .panel__text,
+  .panel__ctaTitle,
+  .panel__cta,
+  .photos__inner img,
+  .exp__item,
+  .hero2__content,
+  .box,
+  .bigTitle__h,
+  .bigTitle__s,
+  .bigTitle__p,
+  .photoFrame,
+  .menuBlock,
+  .blueAcc,
+  .formTitle,
+  .form,
+  .galleryHero__title,
+  .gItem,
+  .partners__title,
+  .partnerSlider,
+  .footerBrand__logo,
+  .footerBrand__text,
+  .follow,
+  .newsletter__title,
+  .newsForm,
+  .addr__title,
+  .addr__text,
+  .addr__map
+`);
 
+revealItems.forEach((item) => {
+  item.classList.add("reveal-item");
+});
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.08,
+  rootMargin: "0px 0px -40px 0px"
+});
+
+revealItems.forEach((item) => {
+  revealObserver.observe(item);
+});
