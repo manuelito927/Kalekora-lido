@@ -183,29 +183,4 @@ document.querySelector(".newsForm")?.addEventListener("submit", (e) => {
   e.target.reset();
 });
 
-// Animazione scroll per tutte le sezioni
-// Animazione scroll più stabile su Safari/iPhone
-// Animazione scroll più stabile su Safari/iPhone
-const revealSections = document.querySelectorAll(
-  "#shuttle, .boxWrap, #ristorante, #menu, #lounge, #contact, #foto, #partners, .footerBrand, .newsletter, #contatti"
-);
-revealSections.forEach((section) => {
-  section.classList.add("reveal-section");
-});
-
-const sectionObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.01,
-  rootMargin: "0px 0px -60px 0px"
-});
-
-revealSections.forEach((section) => {
-  sectionObserver.observe(section);
-});
 
