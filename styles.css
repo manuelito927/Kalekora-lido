@@ -623,9 +623,11 @@ html,body{
 }
 .menuRow__name{
   flex:1;
-  letter-spacing:.06em;
-  font-weight:700;
+  letter-spacing:.04em;
+  font-weight:400;
+  font-family:"Georgia", serif;
   color:#222;
+  line-height:1.6;
 }
 .menuRow__dots{
   flex:1;
