@@ -644,9 +644,10 @@ html,body{
   background:transparent;
   border:0;
   text-align:left;
-  font-weight:900;
+  font-weight:700;
   letter-spacing:.18em;
   cursor:pointer;
+  color:#222;
 }
 .acc__panel{padding:0 0 22px;color:rgba(0,0,0,.6);line-height:2}
 
