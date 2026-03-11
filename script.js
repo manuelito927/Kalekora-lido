@@ -187,9 +187,8 @@ document.querySelector(".newsForm")?.addEventListener("submit", (e) => {
 // Animazione scroll più stabile su Safari/iPhone
 // Animazione scroll più stabile su Safari/iPhone
 const revealSections = document.querySelectorAll(
-  "#experience, #shuttle, .boxWrap, #ristorante, #menu, #lounge, #contact, #foto, #partners, .footerBrand, .newsletter, #contatti"
+  "#shuttle, .boxWrap, #ristorante, #menu, #lounge, #contact, #foto, #partners, .footerBrand, .newsletter, #contatti"
 );
-
 revealSections.forEach((section) => {
   section.classList.add("reveal-section");
 });
