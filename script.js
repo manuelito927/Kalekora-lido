@@ -183,21 +183,19 @@ document.querySelector(".newsForm")?.addEventListener("submit", (e) => {
   e.target.reset();
 });
 
-// Reveal on scroll
-const revealItems = document.querySelectorAll(".reveal");
+// Animazione scroll per tutte le sezioni
+const sections = document.querySelectorAll("section");
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("is-visible");
-      revealObserver.unobserve(entry.target);
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
     }
   });
-}, {
-  threshold: 0.15
+},{
+  threshold:0.15
 });
 
-revealItems.forEach((item) => {
-  revealObserver.observe(item);
+sections.forEach(section=>{
+  observer.observe(section);
 });
-
