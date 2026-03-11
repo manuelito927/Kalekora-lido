@@ -356,8 +356,13 @@ html,body{
   text-align:center;
   color:#fff;
 }
-.panel__title .caps{font-size: 54px}
-.panel__title .script{font-size: 62px}
+.panel__title .caps{
+  font-size:42px;
+}
+
+.panel__title .script{
+  font-size:48px;
+}
 .white{color:#fff}
 .panel__lead{
   margin-top:12px;
