@@ -951,8 +951,8 @@ html{
 
 .reveal-item{
   opacity:0;
-  transform:translateY(16px);
-  transition:opacity .55s ease, transform .55s ease;
+  transform:translateY(30px);
+  transition:opacity 1.2s ease, transform 1.2s ease;
 }
 
 .reveal-item.is-visible{
