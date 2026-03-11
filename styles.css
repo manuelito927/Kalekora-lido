@@ -955,3 +955,25 @@ section.show{
   opacity:1;
   transform:translateY(0);
 }
+
+.btn,
+.menuBtn,
+.formBtn,
+.box__btn,
+.panel__cta,
+.link{
+  opacity:0;
+  transform:scale(.92);
+  transition:opacity .7s ease, transform .7s ease;
+}
+
+.btn.pop-show,
+.menuBtn.pop-show,
+.formBtn.pop-show,
+.box__btn.pop-show,
+.panel__cta.pop-show,
+.link.pop-show{
+  opacity:1;
+  transform:scale(1);
+}
+
