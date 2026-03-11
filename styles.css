@@ -444,8 +444,8 @@ html,body{
 .hero__title{font-size:58px}
   .caps{font-size:40px}
   .script{font-size:50px}
-  .panel__title .caps{font-size:46px}
-  .panel__title .script{font-size:54px}
+.panel__title .caps{font-size:28px}
+.panel__title .script{font-size:32px}
   .arch__frame img{height: 460px}
 }
 
