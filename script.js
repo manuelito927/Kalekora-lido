@@ -209,19 +209,4 @@ const sectionObserver = new IntersectionObserver((entries, observer) => {
 revealSections.forEach((section) => {
   sectionObserver.observe(section);
 });
-// Animazione pop per bottoni e link importanti
-const popItems = document.querySelectorAll(".btn, .menuBtn, .formBtn, .box__btn, .panel__cta, .link");
 
-const popObserver = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("pop-show");
-    }
-  });
-},{
-  threshold:0.25
-});
-
-popItems.forEach(item=>{
-  popObserver.observe(item);
-});
