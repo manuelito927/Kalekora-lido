@@ -945,13 +945,14 @@ html,body{
   }
 }
 
-section{
+.reveal-section{
   opacity:0;
-  transform:translateY(50px);
-  transition:opacity .9s ease, transform .9s ease;
+  transform:translateY(30px);
+  transition:opacity .7s ease, transform .7s ease;
+  will-change:opacity, transform;
 }
 
-section.show{
+.reveal-section.show{
   opacity:1;
   transform:translateY(0);
 }
