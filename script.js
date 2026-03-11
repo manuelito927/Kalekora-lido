@@ -184,22 +184,28 @@ document.querySelector(".newsForm")?.addEventListener("submit", (e) => {
 });
 
 // Animazione scroll per tutte le sezioni
-const sections = document.querySelectorAll("section");
+// Animazione scroll più stabile su Safari/iPhone
+const revealSections = document.querySelectorAll("section:not(.hero)");
 
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
+revealSections.forEach((section) => {
+  section.classList.add("reveal-section");
+});
+
+const sectionObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
       entry.target.classList.add("show");
+      observer.unobserve(entry.target);
     }
   });
-},{
-  threshold:0.15
+}, {
+  threshold: 0.08,
+  rootMargin: "0px 0px -40px 0px"
 });
 
-sections.forEach(section=>{
-  observer.observe(section);
+revealSections.forEach((section) => {
+  sectionObserver.observe(section);
 });
-
 // Animazione pop per bottoni e link importanti
 const popItems = document.querySelectorAll(".btn, .menuBtn, .formBtn, .box__btn, .panel__cta, .link");
 
