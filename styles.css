@@ -584,15 +584,16 @@ html,body{
 }
 .bigTitle__h{
   font-family:"Georgia",serif;
-  font-weight:800;
-  letter-spacing:.08em;
-  font-size:54px;
+  font-weight:700;
+  letter-spacing:.06em;
+  font-size:38px;
 }
+
 .bigTitle__s{
   font-family:"Georgia",serif;
   font-style:italic;
-  font-size:54px;
-  margin-top:-10px;
+  font-size:36px;
+  margin-top:-6px;
 }
 .bigTitle__p{
   margin:24px auto 0;
