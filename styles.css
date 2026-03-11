@@ -384,10 +384,12 @@ html,body{
   margin-top: 6px;
 }
 .panel__cta{
-  display:inline-block;
-  margin-top: 18px;
+  display:block;
+  margin-top:18px;
+  text-align:left;
+  font-size:14px;
   letter-spacing:.18em;
-  font-weight:800;
+  font-weight:600;
   color:#fff;
   opacity:.95;
 }
