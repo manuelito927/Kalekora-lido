@@ -947,8 +947,8 @@ html,body{
 
 .reveal-section{
   opacity:0;
-  transform:translateY(30px);
-  transition:opacity .7s ease, transform .7s ease;
+  transform:translateY(20px);
+  transition:opacity .6s ease, transform .6s ease;
   will-change:opacity, transform;
 }
 
