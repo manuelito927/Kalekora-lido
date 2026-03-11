@@ -185,15 +185,13 @@ document.querySelector(".newsForm")?.addEventListener("submit", (e) => {
 
 // Animazione scroll per tutte le sezioni
 // Animazione scroll più stabile su Safari/iPhone
-const revealSections = document.querySelectorAll("section:not(.hero)");
+// Animazione scroll più stabile su Safari/iPhone
+const revealSections = document.querySelectorAll(
+  "#experience, #shuttle, .boxWrap, #ristorante, #menu, #lounge, #contact, #foto, #partners, .footerBrand, .newsletter, #contatti"
+);
 
-revealSections.forEach((section, index) => {
+revealSections.forEach((section) => {
   section.classList.add("reveal-section");
-
-  // le prime due sezioni visibili subito
-  if (index < 2) {
-    section.classList.add("show");
-  }
 });
 
 const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -205,13 +203,11 @@ const sectionObserver = new IntersectionObserver((entries, observer) => {
   });
 }, {
   threshold: 0.01,
-  rootMargin: "0px 0px -80px 0px"
+  rootMargin: "0px 0px -60px 0px"
 });
 
-revealSections.forEach((section, index) => {
-  if (index >= 2) {
-    sectionObserver.observe(section);
-  }
+revealSections.forEach((section) => {
+  sectionObserver.observe(section);
 });
 // Animazione pop per bottoni e link importanti
 const popItems = document.querySelectorAll(".btn, .menuBtn, .formBtn, .box__btn, .panel__cta, .link");
