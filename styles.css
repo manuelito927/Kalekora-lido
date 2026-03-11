@@ -433,6 +433,13 @@ html,body{
 
 /* ---------- MOBILE TYPE SCALE ---------- */
 @media (max-width: 430px){
+  .panel__title .caps{
+  font-size:34px;
+}
+
+.panel__title .script{
+  font-size:40px;
+}
   .brand__name{font-size:38px}
 .hero__title{font-size:58px}
   .caps{font-size:40px}
