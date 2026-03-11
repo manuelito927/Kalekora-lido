@@ -659,12 +659,14 @@ html,body{
   max-width:520px;
 }
 .menuBtn{
+  flex:1;
   text-align:center;
-  padding:18px 18px;
+  padding:14px 10px;
   border:2px solid #b89f78;
   color:#b89f78;
-  letter-spacing:.18em;
-  font-weight:800;
+  letter-spacing:.14em;
+  font-weight:600;
+  font-size:14px;
 }
 
 /* ===== BLUE ACC ===== */
