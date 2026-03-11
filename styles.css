@@ -657,6 +657,7 @@ html,body{
   gap:14px;
   margin:34px auto 0;
   max-width:520px;
+  align-items:flex-start;
 }
 .menuBtn{
   flex:1;
