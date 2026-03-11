@@ -944,3 +944,15 @@ html,body{
     font-size:16px;
   }
 }
+
+.reveal{
+  opacity:0;
+  transform:translateY(45px);
+  transition:opacity .9s ease, transform .9s ease;
+  will-change:opacity, transform;
+}
+
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
