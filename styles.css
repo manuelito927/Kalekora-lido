@@ -360,10 +360,11 @@ html,body{
 .panel__title .script{font-size: 62px}
 .white{color:#fff}
 .panel__lead{
-  margin-top: 12px;
-  font-size: 20px;
-  font-weight:700;
-  letter-spacing:.06em;
+  margin-top:12px;
+  font-size:20px;
+  font-weight:400;
+  letter-spacing:.05em;
+  font-style:italic;
 }
 .panel__text{
   margin-top: 22px;
