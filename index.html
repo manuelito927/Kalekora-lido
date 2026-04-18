@@ -183,14 +183,37 @@ font-family: 'Inter', Arial, sans-serif;
   margin-bottom: 20px;
 }
 
-    .back-btn {
-      border: 0;
-      background: transparent;
-      color: rgba(255,255,255,0.9);
-      font-size: 16px;
-      cursor: pointer;
-      padding: 0;
-    }
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover (desktop) */
+.back-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Tap (mobile) */
+.back-btn:active {
+  transform: scale(0.96);
+  background: rgba(255,255,255,0.25);
+}
 
     .club-title {
       text-align: center;
