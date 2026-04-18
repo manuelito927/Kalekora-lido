@@ -93,15 +93,17 @@ font-family: 'Inter', Arial, sans-serif;
   min-height: 100vh;
 }
 
-    .home-title {
-      font-size: clamp(28px, 8vw, 46px);
-      line-height: 0.95;
-      letter-spacing: 0.02em;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin: 0 0 110px;
-      text-shadow: var(--text-shadow);
-    }
+    .home-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  align-items: center;       /* centra orizzontalmente */
+  min-height: 100vh;
+  text-align: center;
+}
 
     .big-choice {
       position: relative;
