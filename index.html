@@ -340,10 +340,31 @@ font-family: 'Inter', Arial, sans-serif;
         min-height: 860px;
       }
     }
-    .big-choice span {
-  font-family: 'Inter', sans-serif;
+.gallipoli-choice {
+  position: relative;
+}
+
+.gallipoli-choice img {
+  display: block;
+}
+
+.gallipoli-choice span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: clamp(28px, 7vw, 52px);
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-align: center;
+  color: #1185ff;
+}
+
+.gallipoli-choice::before,
+.gallipoli-choice::after {
+  content: none !important;
 }
   </style>
 </head>
