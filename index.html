@@ -163,22 +163,25 @@ background: var(--taupe);
       filter: saturate(1.02) brightness(0.95);
     }
 
-    .big-choice::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom right, rgba(255,255,255,0.14), rgba(255,255,255,0.02));
-    }
+.big-choice::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom right, rgba(255,255,255,0.22), rgba(255,255,255,0.04)),
+    linear-gradient(to top, rgba(0,0,0,0.22), rgba(0,0,0,0.04));
+}
 
 .big-choice span {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   font-size: clamp(28px, 7vw, 52px);
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   text-align: center;
-  text-shadow: var(--text-shadow);
+  text-shadow: 0 4px 14px rgba(0,0,0,0.35);
   color: #ffffff;
+  letter-spacing: 0.03em;
 }
 
     .separator-o {
