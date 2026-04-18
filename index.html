@@ -1,499 +1,470 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brand — Apulian Beach Experience</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beach Club Booking</title>
+  <style>
+    :root {
+      --bg: #efefef;
+      --white: #ffffff;
+      --black: #000000;
+      --deep-blue: #163a63;
+      --taupe: #938367;
+      --soft-gray: #8e8e8e;
+      --gold: #a89977;
+      --gold-shadow: #6d624a;
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max-width: 430px;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      --text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--white);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: none;
+      padding: 26px 16px 40px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .phone-frame {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      min-height: calc(100vh - 66px);
+      position: relative;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .screen {
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 90px);
+      overflow: hidden;
+    }
+
+    .hero-bg,
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay-dark {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .home-content {
+      position: relative;
+      z-index: 2;
+      padding: 70px 28px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      min-height: calc(100vh - 90px);
+    }
+
+    .home-title {
+      font-size: clamp(28px, 8vw, 46px);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin: 0 0 110px;
+      text-shadow: var(--text-shadow);
+    }
+
+    .big-choice {
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      margin-bottom: 34px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .big-choice img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.02) brightness(0.95);
+    }
+
+    .big-choice::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(255,255,255,0.14), rgba(255,255,255,0.02));
+    }
+
+    .big-choice span {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(28px, 7vw, 52px);
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: var(--text-shadow);
+    }
+
+    .separator-o {
+      text-align: center;
+      font-size: 56px;
+      line-height: 1;
+      font-weight: 500;
+      margin: 2px 0 26px;
+      text-shadow: var(--text-shadow);
+    }
+
+    .inner-page {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 22px 26px 36px;
+      min-height: calc(100vh - 66px);
+      position: relative;
+    }
+
+    .page-kalecora .inner-page {
+      background: var(--taupe);
+    }
+
+    .page-gallipoli .inner-page {
+      background: var(--black);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .back-btn {
+      border: 0;
+      background: transparent;
+      color: rgba(255,255,255,0.9);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .club-title {
+      text-align: center;
+      font-size: clamp(30px, 8vw, 52px);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      margin: 8px 0 24px;
+    }
+
+    .gallery-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .gallery-3 img {
+      width: 100%;
+      aspect-ratio: 0.78;
+      object-fit: cover;
+      display: block;
+    }
+
+    .description {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.16;
+      color: rgba(255,255,255,0.97);
+    }
+
+    .description p {
+      margin: 0 0 18px;
+    }
+
+    .cta-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 64px 0 18px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      background: radial-gradient(circle at top left, #c8bea7, var(--gold));
+      box-shadow: inset 0 3px 10px rgba(255,255,255,0.18), 0 8px 18px rgba(0,0,0,0.35), inset 0 -4px 10px rgba(0,0,0,0.2);
+    }
+
+    .note {
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 14px;
+      line-height: 1.1;
+      opacity: 0.95;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: -22px -26px 28px;
+    }
+
+    .tab-btn {
+      appearance: none;
+      border: 0;
+      color: var(--white);
+      background: transparent;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(28px, 6vw, 40px);
+      line-height: 1;
+      padding: 34px 14px 28px;
+      cursor: pointer;
+      min-height: 146px;
+    }
+
+    .tab-btn.active {
+      background: var(--soft-gray);
+      border-bottom-right-radius: 22px;
+      border-bottom-left-radius: 22px;
+    }
+
+    .gallipoli-panel {
+      display: none;
+    }
+
+    .gallipoli-panel.active {
+      display: block;
+    }
+
+    .stacked-gallery {
+      width: 100%;
+      max-width: 260px;
+      margin-left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .stacked-gallery img {
+      width: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    .stacked-gallery img.small {
+      aspect-ratio: 1.5;
+    }
+
+    .stacked-gallery img.medium {
+      aspect-ratio: 0.78;
+    }
+
+    .stacked-gallery img.large {
+      aspect-ratio: 0.8;
+    }
+
+    .panel-text {
+      color: rgba(255,255,255,0.9);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.25;
+      margin: 18px 10px 0;
+      max-width: 300px;
+    }
+
+    .page-gallipoli .cta-wrap {
+      margin-top: 56px;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .screen,
+      .inner-page,
+      .home-content {
+        min-height: 860px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <main>
+    <!-- HOME -->
+    <section id="page-home" class="page active page-home">
+      <div class="phone-frame">
+        <div class="screen">
+          <img class="hero-bg" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Beach background" />
+          <div class="overlay-dark"></div>
 
-  <!-- TOP BAR (social + call + language) -->
-<div class="topbar">
-  <div class="topbar__left">
-    <a class="icon" href="#" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-        <circle cx="12" cy="12" r="4"></circle>
-        <circle cx="17.2" cy="6.8" r="1.2" class="fill"></circle>
-      </svg>
-    </a>
+          <div class="home-content">
+            <h1 class="home-title">Prenota il tuo<br />beach club in<br />convenzione</h1>
 
-    <a class="icon" href="#" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.7.3-1 1-1z"></path>
-      </svg>
-    </a>
+            <button class="big-choice" data-go="page-kalecora" aria-label="Vai a Kalècora Lecce">
+              <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80" alt="Kalècora Lecce" />
+              <span>LECCE</span>
+            </button>
 
-    <a class="icon" href="#" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M21 8.5c-.2-1.3-1.2-2.3-2.5-2.5C16.8 5.7 14.5 5.5 12 5.5s-4.8.2-6.5.5C4.2 6.2 3.2 7.2 3 8.5c-.3 1.7-.3 5.3 0 7 .2 1.3 1.2 2.3 2.5 2.5 1.7.3 4 .5 6.5.5s4.8-.2 6.5-.5c1.3-.2 2.3-1.2 2.5-2.5.3-1.7.3-5.3 0-7z"></path>
-        <path class="fill" d="M10 9l5 3-5 3z"></path>
-      </svg>
-    </a>
+            <div class="separator-o">o</div>
 
-    <a class="icon" href="#" aria-label="TikTok">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M14 4c.5 1.6 1.8 2.8 3.5 3.1V10c-1.3 0-2.5-.3-3.5-.9v5.5c0 3-2.2 5.4-5.2 5.4S3.5 17.6 3.5 14.6s2.3-5.4 5.3-5.4c.2 0 .4 0 .7.1v3c-.2-.1-.4-.1-.7-.1-1.3 0-2.3 1-2.3 2.4S7.5 17 8.8 17s2.2-1 2.2-2.4V4H14z"></path>
-      </svg>
-    </a>
-
-    <a class="icon" href="#" aria-label="Email">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="3" y="5" width="18" height="14" rx="1.5"></rect>
-        <path class="fill" d="M4 7l8 6 8-6"></path>
-      </svg>
-    </a>
-
-    <a class="icon" href="tel:+390000000000" aria-label="Telefono">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6.6 3h2.8l1.2 4.2-1.8 1.8c1 2 2.6 3.7 4.6 4.7l1.8-1.8L20 13v2.8c0 1-.8 1.8-1.8 1.8C10.4 17.6 4.4 11.6 4.4 3.8 4.4 2.8 5.2 3 6.2 3h.4z"></path>
-      </svg>
-    </a>
-  </div>
-
-  <div class="topbar__right">
-    <button class="lang" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
-      <span id="langLabel">IT</span>
-      <span class="chev">⌄</span>
-    </button>
-    <div class="lang__menu" id="langMenu" role="listbox" aria-label="Lingua" hidden>
-      <button type="button" data-lang="it" class="lang__opt">IT</button>
-      <button type="button" data-lang="en" class="lang__opt">EN</button>
-    </div>
-  </div>
-</div>
-  <!-- HEADER (logo + hamburger) -->
-  <header class="header">
-    <div class="header__inner">
-<div class="brand">
-  <div class="brand__text">
-<div class="brand__name">Kalekora</div>
-    <div class="brand__sub">APULIAN BEACH EXPERIENCE</div>
-  </div>
-</div>
-
-      <button class="hamb" id="hamb" type="button" aria-label="Apri menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-<!-- MENU OVERLAY (apre solo al tap, con X) -->
-<div class="overlay" id="overlay" hidden>
-<div class="overlay__top">
-
-  <button class="close" id="closeMenu" type="button" aria-label="Chiudi menu">×</button>
-
-</div>
-
-  <nav class="overlay__nav" aria-label="Menu">
-    <a href="#home">Home</a>
-    <a href="#welcome">Benvenuti</a>
-    <a href="#coast">Costa</a>
-    <a href="#experience">Esperienza</a>
-    <a href="#contact">Contatti</a>
-    <a class="overlay__cta" href="#coast">PRENOTA LA TUA POSTAZIONE</a>
-  </nav>
-</div>
-  </header>
-
-  <!-- HERO (full image + handwriting text + INFO button) -->
-<section class="hero" id="home">
-    <!-- sostituisci immagine -->
-<img class="hero__img" src="https://images.pexels.com/photos/1838554/pexels-photo-1838554.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Woman at beach sunset">
-    <div class="hero__overlay"></div>
-
-    <div class="hero__content">
-      <h1 class="hero__title">Walking<br>on<br>sunshine</h1>
-      <a class="btn" href="#welcome" data-i18n="btn_info">INFO</a>
-    </div>
-  </section>
-
-  <!-- ARCH IMAGE BLOCK -->
-  <section class="arch">
-    <div class="arch__frame">
-      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1400&auto=format&fit=crop" alt="">
-    </div>
-  </section>
-
-  <!-- WELCOME TEXT -->
-  <section class="welcome" id="welcome">
-<h2 class="welcome__title">
-  <span class="caps" data-i18n="welcome_caps">BENVENUTI AL</span>
-<span class="script">Kalekora</span>
-</h2>
-
-    <p class="welcome__text" data-i18n="welcome_text">
-      Respira profondamente e immergiti nella bellezza della tua costa.
-      Ammira la sabbia e le acque scintillanti. Assapora i prodotti locali,
-      dal tuo lettino in spiaggia o nel nostro ristorante in riva al mare.
-    </p>
-
-    <a class="link" href="#coast" data-i18n="welcome_cta">PRENOTA LA TUA POSTAZIONE</a>
-  </section>
-
-  <!-- COAST CARD (textured) -->
-  <section class="panel panel--blue" id="coast">
-    <div class="panel__inner">
-      <h3 class="panel__title">
-        <span class="caps" data-i18n="coast_caps">SULLA COSTA</span>
-        <span class="script white" data-i18n="coast_script">Pugliese</span>
-      </h3>
-
-      <p class="panel__lead" data-i18n="coast_lead">Goditi l’intera giornata sulla nostra spiaggia.</p>
-
-      <p class="panel__text" data-i18n="coast_text">
-        Il nostro beach club è situato in una parte naturale della costa.
-        Esperienze e atmosfera riflettono un’anima libera, curiosa e moderna.
-      </p>
-
-      <div class="divider"></div>
-
-      <p class="panel__ctaTitle" data-i18n="coast_ctaTitle">SCEGLI LA TUA POSTAZIONE IN RIVA AL MARE</p>
-      <a class="panel__cta" href="#" data-i18n="coast_cta">PRENOTA</a>
-    </div>
-  </section>
-
-  <!-- PHOTO STRIP (2 pics like screenshot) -->
-  <section class="photos">
-    <div class="photos__inner">
-<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80" alt="">
-      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop" alt="">
-    </div>
-  </section>
-
-  <!-- EXPERIENCE (textured brown + 3 blocks icons) -->
-  <section class="panel panel--sand" id="experience">
-    <div class="panel__inner center">
-      <h3 class="panel__title">
-        <span class="caps white" data-i18n="exp_caps">UN’ESPERIENZA COMPLETA</span>
-        <span class="script white" data-i18n="exp_script">per tutta la giornata</span>
-      </h3>
-
-      <div class="exp">
-        <div class="exp__item">
-          <div class="exp__icon">☂</div>
-          <div class="exp__name" data-i18n="exp_1_t">LIDO</div>
-          <div class="exp__desc" data-i18n="exp_1_d">Il luogo ideale per vivere la tua estate.</div>
-        </div>
-
-        <div class="line"></div>
-
-        <div class="exp__item">
-          <div class="exp__icon">🍴</div>
-          <div class="exp__name" data-i18n="exp_2_t">RISTORANTE</div>
-          <div class="exp__desc" data-i18n="exp_2_d">Cucina e prodotti locali in riva al mare.</div>
-        </div>
-
-        <div class="line"></div>
-
-        <div class="exp__item">
-          <div class="exp__icon">🍸</div>
-          <div class="exp__name" data-i18n="exp_3_t">LOUNGE BAR</div>
-          <div class="exp__desc" data-i18n="exp_3_d">Drink e aperitivi dall’alba al tramonto.</div>
-        </div>
-
-        <div class="line"></div>
-
-        <div class="exp__item">
-          <div class="exp__icon">♪</div>
-          <div class="exp__name" data-i18n="exp_4_t">EVENTI</div>
-          <div class="exp__desc" data-i18n="exp_4_d">Live music, DJ set ed eventi privati.</div>
+            <button class="big-choice" data-go="page-gallipoli" aria-label="Vai a Gallipoli">
+              <img src="https://images.unsplash.com/photo-1501959915551-4e8a04f4d01f?auto=format&fit=crop&w=1200&q=80" alt="Gallipoli" />
+              <span>GALLIPOLI</span>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<!-- SHUTTLE HERO -->
-<section class="hero2" id="shuttle">
-<img class="hero2__img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600&auto=format&fit=crop&q=80" alt="">
-  <div class="hero2__overlay"></div>
+    <!-- KALECORA -->
+    <section id="page-kalecora" class="page page-kalecora">
+      <div class="inner-page">
+        <div class="top-bar">
+          <button class="back-btn" data-go="page-home">← Home</button>
+          <div></div>
+        </div>
 
-  <div class="hero2__content">
-    <div class="hero2__badge" aria-hidden="true">🚌</div>
-    <h2 class="hero2__title">Servizio shuttle navetta</h2>
-    <p class="hero2__text">
-      Raggiungi il nostro angolo di paradiso attraverso il nostro servizio di
-      <strong>shuttle gratuito*</strong>, attivo nel raggio di 10km.
-    </p>
-    <p class="hero2__note">*Solo diurno e a servizio esclusivo dei Clienti Beach Club</p>
-  </div>
-</section>
+        <h2 class="club-title">KALÈCORA</h2>
 
-<!-- SHUTTLE BOX -->
-<section class="boxWrap">
-  <div class="box">
-    <p class="box__lead">Verifica i punti di partenza strategici posizionati sul territorio.</p>
-    <p class="box__muted">Servizio valido dal lunedì al sabato</p>
-    <div class="box__line"></div>
+        <div class="gallery-3">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Kalècora 1" />
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt="Kalècora 2" />
+          <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=800&q=80" alt="Kalècora 3" />
+        </div>
 
-    <h3 class="box__title">PICK UP POINTS:</h3>
-    <ul class="box__list">
-      <li>La casa del mare (nei pressi di Porta Vecchia)</li>
-      <li>Piazza Vittorio Emanuele II</li>
-      <li>Largo Cristoforo Colombo (nei pressi del porto)</li>
-      <li>Stazione ferroviaria</li>
-    </ul>
+        <div class="description">
+          <p>Situato lungo la costa adriatica del Salento, il Kalè Cora Beach è uno stabilimento balneare immerso in un contesto naturale di grande fascino, tra macchia mediterranea, scogliere e calette di sabbia dorata.</p>
+          <p>Il lido si distingue per un’offerta curata e versatile, che combina comfort e atmosfera: postazioni attrezzate, gazebo vista mare e un’area food pensata per valorizzare i sapori del territorio, con proposte da vivere direttamente in spiaggia o al tramonto.</p>
+          <p>Un luogo in cui natura, design e lifestyle si incontrano per offrire un’esperienza balneare completa e distintiva.</p>
+        </div>
 
-    <a class="box__btn" href="tel:+390000000000">CHIAMA PER INFO</a>
-  </div>
-</section>
+        <div class="cta-wrap">
+          <a class="cta-btn" href="https://example.com/kalecora" target="_blank" rel="noopener noreferrer">Prenota ora</a>
+        </div>
 
-<!-- RISTORANTE -->
-<section class="bigTitle" id="ristorante">
-  <h2 class="bigTitle__h">IL RISTORANTE</h2>
-  <div class="bigTitle__s">sul mare</div>
-
-  <p class="bigTitle__p">
-    Dai pranzi in spiaggia alle cene sotto le stelle, in una location unica per gustare
-    tante specialità della cucina tipica, con una favolosa vista mare.
-  </p>
-
-<div class="photoFrame">
-  <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1400&auto=format&fit=crop" alt="Dinner by the sea">
-</div>
-
-<div class="photoFrame">
-<img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&auto=format&fit=crop&q=80" alt="Restaurant dinner sea view">
-</div>
-</section>
-
-<!-- DAL NOSTRO MENU -->
-<section class="bigTitle" id="menu">
-  <h2 class="bigTitle__h">DAL NOSTRO</h2>
-  <div class="bigTitle__s">menu</div>
-
-  <p class="bigTitle__p">
-    Dalla terra e dal mare, la nostra cucina parte dalle tradizioni per reinventarsi
-    con fantasia e originalità, con prodotti stagionali e di provenienza locale.
-  </p>
-
-  <div class="menuBlock">
-    <div class="menuCat">— ANTIPASTI</div>
-    <div class="menuHr"></div>
-
-    <div class="menuRow">
-      <div class="menuRow__name">BATTUTA DI GAMBERO ROSSO, OLIO EVO, CRISTALLI DI SALE BLU...</div>
-      <div class="menuRow__dots"></div>
-      <div class="menuRow__price">20€</div>
-    </div>
-
-    <div class="menuRow">
-      <div class="menuRow__name">SAUTÉ DI COZZE IMPEPATE E CROSTINI DI PANE</div>
-      <div class="menuRow__dots"></div>
-      <div class="menuRow__price">16€</div>
-    </div>
-
-    <div class="menuRow">
-      <div class="menuRow__name">TATAKI DI TONNO ROSSO, STRACCIATELLA E CAPPERI IN FIORE</div>
-      <div class="menuRow__dots"></div>
-      <div class="menuRow__price">18€</div>
-    </div>
-
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false">
-        <span>+ PRIMI PIATTI</span>
-      </button>
-      <div class="acc__panel" hidden>
-        <p>Contenuto demo: aggiungi qui i piatti.</p>
+        <p class="note">*offerta riservata ai clienti della struttura.<br />Sarà richiesta prova di soggiorno nella struttura</p>
       </div>
-    </div>
+    </section>
 
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false">
-        <span>+ SECONDI PIATTI</span>
-      </button>
-      <div class="acc__panel" hidden>
-        <p>Contenuto demo: aggiungi qui i piatti.</p>
+    <!-- GALLIPOLI -->
+    <section id="page-gallipoli" class="page page-gallipoli">
+      <div class="inner-page">
+        <div class="top-bar">
+          <button class="back-btn" data-go="page-home">← Home</button>
+          <div></div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="zen">ZEN<br />BEACH</button>
+          <button class="tab-btn" data-tab="banzay">BANZAY<br />BEACH</button>
+        </div>
+
+        <div id="panel-zen" class="gallipoli-panel active">
+          <div class="stacked-gallery">
+            <img class="small" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="Zen Beach panorama" />
+            <img class="medium" src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=900&q=80" alt="Zen Beach food" />
+            <img class="large" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80" alt="Zen Beach sunset" />
+          </div>
+          <div class="cta-wrap">
+            <a id="zen-link" class="cta-btn" href="https://example.com/zen-beach" target="_blank" rel="noopener noreferrer">Prenota ora</a>
+          </div>
+        </div>
+
+        <div id="panel-banzay" class="gallipoli-panel">
+          <div class="stacked-gallery">
+            <img class="large" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80" alt="Banzay Beach tramonto" />
+            <img class="medium" src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=80" alt="Banzay Beach ombrelloni" />
+          </div>
+          <div class="panel-text">Banzay Beach propone un’atmosfera dinamica e rilassata, ideale per chi cerca mare, tramonto e servizi curati in una delle località più richieste di Gallipoli.</div>
+          <div class="cta-wrap">
+            <a id="banzay-link" class="cta-btn" href="https://example.com/banzay-beach" target="_blank" rel="noopener noreferrer">Prenota ora</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+  </main>
 
-    <div class="acc">
-      <button class="acc__btn" type="button" aria-expanded="false">
-        <span>+ DESSERT</span>
-      </button>
-      <div class="acc__panel" hidden>
-        <p>Contenuto demo: aggiungi qui i dolci.</p>
-      </div>
-    </div>
+  <script>
+    const pages = document.querySelectorAll('.page');
+    const goButtons = document.querySelectorAll('[data-go]');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.gallipoli-panel');
 
-    <div class="menuBtns">
-      <a class="menuBtn" href="#">MENÙ RESTAURANT</a>
-      <a class="menuBtn" href="#">BEACH MENÙ</a>
-    </div>
-  </div>
-</section>
+    function showPage(pageId) {
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-<!-- CARD BLUE (accordion) -->
-<section class="panel panel--blue" id="lounge">
-  <div class="panel__inner pad0">
-    <div class="blueAcc">
-      <button class="blueAcc__btn" type="button" aria-expanded="true">
-        <span class="blueAcc__t">Lounge Bar</span>
-        <span class="blueAcc__i">^</span>
-      </button>
+    goButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        showPage(button.dataset.go);
+      });
+    });
 
-      <div class="blueAcc__panel">
-        <p class="blueAcc__p">
-          Le nostre eleganti postazioni bar sono affacciate sul mare, pronte a soddisfare ogni richiesta.
-          Ideali per rilassarsi o festeggiare eventi in riva al mare.
-        </p>
-      </div>
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tab;
 
-      <div class="blueAcc__sep"></div>
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
 
-      <button class="blueAcc__btn" type="button" aria-expanded="false">
-        <span class="blueAcc__t">Musica ed eventi</span>
-        <span class="blueAcc__i">v</span>
-      </button>
-
-      <div class="blueAcc__panel" hidden>
-        <p class="blueAcc__p">Contenuto demo: live music, dj set, eventi privati.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATTI FORM -->
-<section class="panel panel--sand" id="contact">
-  <div class="panel__inner formWrap">
-    <h3 class="formTitle">
-      <span class="caps white">CONTATTACI</span>
-      <span class="script white">per un preventivo</span>
-    </h3>
-
-    <form class="form">
-      <label class="f">
-        <span>NOME E COGNOME</span>
-        <input type="text" name="name" required>
-      </label>
-
-      <label class="f">
-        <span>NUMERO DI TELEFONO</span>
-        <input type="tel" name="phone" required>
-      </label>
-
-      <label class="f">
-        <span>INDIRIZZO E-MAIL</span>
-        <input type="email" name="email" required>
-      </label>
-
-      <label class="f">
-        <span>MESSAGGIO</span>
-        <textarea name="message" rows="4" required></textarea>
-      </label>
-
-      <label class="chk">
-        <input type="checkbox" required>
-        <span>I tuoi dati personali saranno utilizzati per elaborare la tua richiesta e per altri scopi descritti nella privacy policy</span>
-      </label>
-
-      <button class="formBtn" type="submit">CONTATTACI</button>
-    </form>
-  </div>
-</section>
-
-
-<!-- FOTO GALLERY -->
-<section class="galleryHero" id="foto">
-  <div class="galleryHero__img">
-    <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1400&auto=format&fit=crop" alt="">
-  </div>
-
-  <div class="galleryHero__title">
-    <h2 class="bigTitle__h">BENESSERE E<br>RELAX</h2>
-    <div class="bigTitle__s">foto gallery</div>
-  </div>
-
-<div class="galleryStack">
-  <div class="gItem">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&auto=format&fit=crop&q=80" alt="Spiaggia al tramonto">
-  </div>
-
-  <div class="gItem">
-    <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1400&auto=format&fit=crop&q=80" alt="Mare relax">
-  </div>
-
-  <div class="gItem">
-    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1400&auto=format&fit=crop&q=80" alt="Beach club relax">
-  </div>
-
-  <div class="gItem">
-    <img src="https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?w=1400&auto=format&fit=crop&q=80" alt="Aperitivo sul mare">
-  </div>
-</div>
-</section>
-
-<!-- PARTNERS (slider semplice) -->
-<section class="partners" id="partners">
-  <div class="partners__title">Partners</div>
-
-  <div class="partnerSlider">
-    <button class="pArrow" type="button" id="pPrev" aria-label="Prev">‹</button>
-
-    <div class="pSlide">
-      <img id="pImg" src="https://dummyimage.com/520x260/bba27c/ffffff&text=PARTNER+LOGO" alt="Partner">
-    </div>
-
-    <button class="pArrow" type="button" id="pNext" aria-label="Next">›</button>
-  </div>
-</section>
-
-<!-- FOOTER BRAND + FOLLOW -->
-<section class="footerBrand">
-  <div class="footerBrand__logo">
-    <div class="footerBrand__mark">◎</div>
-<div class="footerBrand__name">Kalekora</div>
-    <div class="footerBrand__sub">APULIAN BEACH EXPERIENCE</div>
-  </div>
-
-  <p class="footerBrand__text">
-    vivi un’esperienza coinvolgente e completa per tutta la giornata: spiaggia,
-    ristorante, lounge bar, aperitivi ed eventi.
-  </p>
-
-  <div class="follow">
-    <div class="follow__label">SEGUICI SU</div>
-    <div class="follow__icons">
-      <a class="round" href="#" aria-label="Facebook">f</a>
-      <a class="round" href="#" aria-label="Instagram">⌁</a>
-      <a class="round" href="#" aria-label="YouTube">▶</a>
-      <a class="round" href="#" aria-label="TikTok">♪</a>
-    </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section class="newsletter">
-  <div class="newsletter__title">NEWSLETTER</div>
-
-  <form class="newsForm">
-    <input class="newsInput" type="email" placeholder="Indirizzo e-mail" required>
-    <button class="newsBtn" type="submit">ISCRIVITI</button>
-  </form>
-</section>
-
-<!-- INDIRIZZO E CONTATTI -->
-<section class="addr" id="contatti">
-  <div class="addr__title">INDIRIZZO E CONTATTI</div>
-
-  <div class="addr__text">
-    <div>Via Procaccia, 58</div>
-    <div>70043 Monopoli (Ba) - Italy</div>
-    <div>Beach: +39 000 000 0000</div>
-    <div>080 0000000</div>
-    <div>Restaurant: 080 0000000</div>
-    <div>Events: +39 000 000 0000</div>
-    <div>info@example.com</div>
-  </div>
-
-  <a class="addr__map" href="#" target="_blank" rel="noreferrer">VEDI LA MAPPA</a>
-</section>
-
-  <script src="script.js"></script>
+        button.classList.add('active');
+        document.getElementById(`panel-${target}`).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
