@@ -122,7 +122,7 @@ html, body {
 
 .big-choice {
   position: relative;
-  border: 2px solid rgba(255, 255, 255, 0.92);
+  border: 1.8px solid rgba(255, 255, 255, 0.78);
   border-radius: 34px;
   overflow: hidden;
   min-height: 170px;
@@ -132,24 +132,23 @@ html, body {
   padding: 18px;
   margin-bottom: 22px;
   cursor: pointer;
-  background: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.10);
 
   box-shadow:
-    inset 0 2px 0 rgba(255,255,255,0.45),
-    inset 0 -10px 18px rgba(0,0,0,0.18),
-    0 18px 30px rgba(0,0,0,0.28),
-    0 10px 0 rgba(122, 110, 86, 0.65),
-    0 2px 0 rgba(255,255,255,0.12);
+    inset 0 1px 0 rgba(255,255,255,0.30),
+    inset 0 -8px 16px rgba(0,0,0,0.12),
+    0 12px 22px rgba(0,0,0,0.20),
+    0 5px 0 rgba(124, 113, 92, 0.42);
 
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transform: translateY(0);
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
     border-color 0.18s ease,
-    filter 0.18s ease,
-    background 0.18s ease;
+    background 0.18s ease,
+    filter 0.18s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
