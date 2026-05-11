@@ -482,11 +482,20 @@ html, body {
 }
 
 .page-gallipoli .cta-wrap {
-  position: sticky;
-  bottom: 90px;
-  z-index: 20;
-  margin-top: 28px;
-  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  margin-top: 26px;
+  margin-bottom: 18px;
+  transition: all 0.35s ease;
+}
+
+.page-gallipoli .cta-wrap.sticky {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 88px;
+  z-index: 100;
+  margin: 0;
 }
 
 .page-gallipoli .cta-btn {
