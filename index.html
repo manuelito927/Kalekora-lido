@@ -292,19 +292,29 @@ html, body {
 
 .gallery-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  margin-bottom: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
-    .gallery-3 img {
-      width: 100%;
-      aspect-ratio: 0.78;
-      object-fit: cover;
-      display: block;
-    }
+.gallery-3 img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+}
+
+.gallery-3 img:first-child {
+  grid-column: span 2;
+  aspect-ratio: 1.7;
+}
+
+.gallery-3 img:nth-child(2),
+.gallery-3 img:nth-child(3) {
+  aspect-ratio: 0.85;
+}
+
+
 
 .gallery-horizontal {
   display: grid;
