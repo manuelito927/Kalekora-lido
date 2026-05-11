@@ -652,6 +652,22 @@ html, body {
         document.getElementById(`panel-${target}`).classList.add('active');
       });
     });
+    
+    <script>
+const zenPanel = document.getElementById('panel-zen');
+const ctaWrap = zenPanel.querySelector('.cta-wrap');
+
+window.addEventListener('scroll', () => {
+  const triggerPoint = 420;
+
+  if (window.scrollY > triggerPoint) {
+    ctaWrap.classList.add('sticky');
+  } else {
+    ctaWrap.classList.remove('sticky');
+  }
+});
+</script>
+    
   </script>
 </body>
 </html>
