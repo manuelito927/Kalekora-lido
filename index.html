@@ -623,51 +623,48 @@ html, body {
     </section>
   </main>
 
-  <script>
-    const pages = document.querySelectorAll('.page');
-    const goButtons = document.querySelectorAll('[data-go]');
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.gallipoli-panel');
+ <script>
+  const pages = document.querySelectorAll('.page');
+  const goButtons = document.querySelectorAll('[data-go]');
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.gallipoli-panel');
 
-    function showPage(pageId) {
-      pages.forEach(page => page.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    goButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        showPage(button.dataset.go);
-      });
-    });
-
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const target = button.dataset.tab;
-
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        panels.forEach(panel => panel.classList.remove('active'));
-
-        button.classList.add('active');
-        document.getElementById(`panel-${target}`).classList.add('active');
-      });
-    });
-    
-    <script>
-const zenPanel = document.getElementById('panel-zen');
-const ctaWrap = zenPanel.querySelector('.cta-wrap');
-
-window.addEventListener('scroll', () => {
-  const triggerPoint = 420;
-
-  if (window.scrollY > triggerPoint) {
-    ctaWrap.classList.add('sticky');
-  } else {
-    ctaWrap.classList.remove('sticky');
+  function showPage(pageId) {
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-});
+
+  goButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      showPage(button.dataset.go);
+    });
+  });
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.tab;
+
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      panels.forEach(panel => panel.classList.remove('active'));
+
+      button.classList.add('active');
+      document.getElementById(`panel-${target}`).classList.add('active');
+    });
+  });
+
+  const zenPanel = document.getElementById('panel-zen');
+  const ctaWrap = zenPanel.querySelector('.cta-wrap');
+
+  window.addEventListener('scroll', () => {
+    const triggerPoint = 420;
+
+    if (window.scrollY > triggerPoint) {
+      ctaWrap.classList.add('sticky');
+    } else {
+      ctaWrap.classList.remove('sticky');
+    }
+  });
 </script>
-    
-  </script>
 </body>
 </html>
