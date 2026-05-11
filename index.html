@@ -133,8 +133,7 @@ min-height: 100dvh;
 
 .big-choice {
   position: relative;
-  /* Bordo semi-trasparente che "pesca" il colore dallo sfondo */
-  border: 2.6px solid rgba(255, 255, 255, 0.45);
+  border: 2.6px solid rgba(255, 255, 255, 0.96);
   border-radius: 34px;
   overflow: hidden;
   min-height: 170px;
@@ -144,59 +143,87 @@ min-height: 100dvh;
   padding: 18px;
   margin-bottom: 22px;
   cursor: pointer;
-  
-  /* Rimuove i colori solidi e aggiunge trasparenza con sfocatura */
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.14);
 
-  /* Ombra esterna morbida (senza il colore marrone di prima) */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.42),
+    inset 0 -12px 22px rgba(0,0,0,0.18),
+    0 20px 34px rgba(0,0,0,0.28),
+    0 10px 0 rgba(122,108,84,0.55),
+    0 0 0 1px rgba(255,255,255,0.14);
 
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   transform: translateY(0);
-  transition: all 0.2s ease-out;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease,
+    filter 0.18s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .big-choice:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.18);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.50),
+    inset 0 -14px 24px rgba(0,0,0,0.18),
+    0 26px 40px rgba(0,0,0,0.30),
+    0 12px 0 rgba(122,108,84,0.52),
+    0 0 0 1px rgba(255,255,255,0.16);
 }
 
 .big-choice:active {
-  transform: translateY(4px) scale(0.97);
-  transition: all 0.1s ease;
+  transform: translateY(7px) scale(0.985);
+  box-shadow:
+    inset 0 4px 10px rgba(0,0,0,0.22),
+    inset 0 -2px 5px rgba(255,255,255,0.08),
+    0 8px 14px rgba(0,0,0,0.18),
+    0 3px 0 rgba(122,108,84,0.42);
+}
+
+.big-choice:focus-visible {
+  outline: 3px solid rgba(255,255,255,0.92);
+  outline-offset: 4px;
 }
 
 .big-choice img {
   position: absolute;
-  /* 'inset: 0' riempie perfettamente l'area fino ai bordi */
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1; /* Sotto il testo */
-  filter: saturate(1.1) brightness(0.9);
+  filter: saturate(1.02) brightness(0.95);
 }
 
-/* Rimosso l'effetto scuro che copriva l'immagine */
 .big-choice::after {
-  display: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(255,255,255,0.30) 0%,
+      rgba(255,255,255,0.14) 18%,
+      rgba(255,255,255,0.04) 42%,
+      rgba(0,0,0,0.08) 72%,
+      rgba(0,0,0,0.18) 100%);
+  pointer-events: none;
 }
 
 .big-choice span {
   position: relative;
-  z-index: 2; /* Sopra l'immagine */
+  z-index: 2;
   font-size: clamp(28px, 7vw, 52px);
   font-weight: 800;
   text-transform: uppercase;
   text-align: center;
   color: #ffffff;
   letter-spacing: 0.03em;
-  /* Ombra testo per massima leggibilità sopra le foto */
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.28),
+    0 1px 0 rgba(255,255,255,0.06);
 }
 
     .separator-o {
